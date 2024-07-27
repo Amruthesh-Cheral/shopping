@@ -1,0 +1,36 @@
+<div class="container">
+    <div class="add-products mt-5">
+
+        <div class="text-center alert alert-success" *ngIf="addMsg"> {{addMsg}} </div>
+        
+        <form [formGroup]="form" (ngSubmit)="submitProduct()" >
+            <div class="row">
+                <div class="col-md-6 col-sm-12 pb-3">
+                    <label>Enter Product Name</label>
+                    <input type="text" class="form-control" formControlName="productName" placeholder="Name">
+                </div>
+                <div class="col-md-6 col-sm-12 pb-3">
+                    <label>Enter Product Price</label>
+                    <input type="text" class="form-control" formControlName="productPrice" placeholder="Price">
+                </div>
+                <div class="col-md-6 col-sm-12 pb-3">
+                    <label class="pb-2">Enter Product Color</label>
+                    <input type="text" class="form-control" formControlName="productColor" placeholder="Color">
+                </div>
+                <div class="col-md-6 col-sm-12 pb-3">
+                    <label class="pb-2">Enter Product Category</label>
+                    <input type="text" class="form-control" formControlName="productCategory" placeholder="Category">
+                </div>
+                <div class="col-md-6 col-sm-12 pb-3">
+                    <label class="pb-2">Enter Product Description</label>
+                    <input type="text" class="form-control" formControlName="productDescription" placeholder="Description">
+                </div>
+                <div class="col-md-6 col-sm-12 pb-3">
+                    <label class="pb-2">Enter Product Image URL</label>
+                    <input type="text" class="form-control" formControlName="productURL" placeholder="Image URL">
+                </div>
+                <button type="submit" class="btn btn-secondary">Submit</button>
+            </div>
+          </form>
+    </div>
+</div>

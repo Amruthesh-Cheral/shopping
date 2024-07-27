@@ -1,0 +1,18 @@
+<div class="row pt-5" *ngIf="productData">
+    <div class="col-md-6 col-sm-12" >
+        <img src="{{productData.productURL}}" class="img-fluid" alt="">
+    </div>
+    <div class="col-md-6 col-sm-12" >
+        <h3>{{productData.productName}}  <span>$ {{productData.productPrice}}</span> </h3>
+        <p> Category : {{productData.productCategory}}</p>
+        <p class="color" [style.backgroundColor]="productData.productColor"></p>
+        <p>Description : {{productData.productDescription}}</p>
+        <button>Buy</button>
+        <button (click)="addToCart()">Add to Cart</button>
+        <div class="d-flex align-items-center ">
+            <button (click)="handleClick('min')">+</button>
+            <input type="text" value="{{productQuantity}}">
+            <button (click)="handleClick('plus')" [disabled]="productQuantity === 1">-</button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,37 @@
+<div class="form-main">
+    <div class="outer" *ngIf="!signLogin">
+        <form #sellerSignup="ngForm" (ngSubmit)="signUp(sellerSignup.value)">
+            <h1>Seller Sign Up</h1>
+            <p>Enter Name</p>
+            <input class="in" type="text" placeholder="Enter Name"  ngModel name="name"/>
+            <p>Enter Confirm Password</p>
+            <input class="in" type="password" placeholder="Enter Password" ngModel name="password"/>
+            <p>Enter Mail ID</p>
+            <input class="in" type="email" placeholder="Enter Email" ngModel name="email"/>
+            <br>
+           <div class="pb-4 text-center w-100">
+            <a (click)="alreadyAcc()">Already have an account ?  Click to Login</a>
+           </div>
+            <button type="submit" class="btn btn-success">Sign Up</button>
+        </form>
+    </div>
+    <div class="outer" *ngIf="signLogin">
+        <form #sellerLogin="ngForm" (ngSubmit)="login(sellerLogin.value)">
+            <h1>Seller Login</h1>
+            <div class="text-center w-100">
+                <h6 class="text-danger"> {{authError}}</h6>
+            </div>
+            <p>Enter Name</p>
+            <input class="in" type="text" placeholder="Enter Name"  ngModel name="name"/>
+            <p>Enter Confirm Password</p>
+            <input class="in" type="password" placeholder="Enter Password" ngModel name="password"/>
+            <br>
+           
+            <div class="pb-4 text-center w-100">
+                <a (click)="alreadyAcc()" >Create a new account</a>
+               </div>
+
+            <button type="submit" class="btn btn-success">Login</button>
+        </form>
+    </div>
+</div>

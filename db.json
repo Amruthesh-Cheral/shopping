@@ -1,0 +1,47 @@
+{
+  "seller": [
+    {
+      "id": "d365",
+      "name": "amru",
+      "email": "amrutest99@gmail.com",
+      "password": "1234"
+    }
+  ],
+  "user": [
+    {
+      "id": "322d",
+      "name": "name",
+      "password": "1234",
+      "email": "9746456992"
+    }
+  ],
+  "products": [
+    {
+      "productName": "oppo 2024",
+      "productPrice": "12000",
+      "productColor": "green",
+      "productCategory": "mobile",
+      "productDescription": "image quality",
+      "productURL": "https://www.oppo.com/content/dam/oppo-campaign-site/in/events/oppo-product/image-link/march-2023/OPPO_F27_Pro+_5G_Midnight_Navy_frontback_1200x1200.jpg",
+      "id": "1da8"
+    },
+    {
+      "id": "7cca",
+      "productName": "motorolla 123",
+      "productPrice": "292929",
+      "productColor": "blue",
+      "productCategory": "mobile",
+      "productDescription": "looking awsome",
+      "productURL": "https://rukminim2.flixcart.com/image/850/1000/xif0q/mobile/e/y/n/pixel-8a-ga04432-in-google-original-imahyn3mqzdbzywg.jpeg?q=90&crop=false"
+    },
+    {
+      "id": "e51f",
+      "productName": "MOtorolla 456",
+      "productPrice": "68978",
+      "productColor": "pitha",
+      "productCategory": "mobile",
+      "productDescription": "slider ",
+      "productURL": "https://i.gadgets360cdn.com/products/large/Realme-12-Pro-Plus-5G-DB-709x800-1706525405.jpg"
+    }
+  ]
+}
