@@ -10,32 +10,29 @@ import { NotifierService } from 'angular-notifier';
   styleUrls: ['./seller-add-product.component.scss']
 })
 export class SellerAddProductComponent {
-   addMsg: string | undefined; 
-   private notifier!: NotifierService;
-  constructor(private products : ProductsService,private fb: FormBuilder,notifier: NotifierService){
-  this.notifier = notifier
-  }
-  form =  this.fb.group({
-    productName: new FormControl('',Validators.required),
-    productPrice: new FormControl('',Validators.required),
+  addMsg: string | undefined;
+  constructor(private products: ProductsService, private fb: FormBuilder) {}
+  form = this.fb.group({
+    productName: new FormControl('', Validators.required),
+    productPrice: new FormControl('', Validators.required),
     productColor: new FormControl('', Validators.required),
     productCategory: new FormControl('', Validators.required),
-    productDescription: new FormControl('',Validators.required),
-    productURL: new FormControl('',Validators.required),
+    productDescription: new FormControl('', Validators.required),
+    productURL: new FormControl('', Validators.required),
   })
-  submitProduct(){
-    if(this.form.valid){
-      this.products.addProduct(this.form.value).subscribe(result =>{
+  submitProduct() {
+    if (this.form.valid) {
+      this.products.addProduct(this.form.value).subscribe(result => {
         if (result) {
           this.addMsg = "Successfully Product Added"
         }
-        setTimeout(()=> (this.addMsg = undefined),4000);
+        setTimeout(() => (this.addMsg = undefined), 4000);
       })
       this.form.reset();
-    
-    }else {
+
+    } else {
       alert("something error")
     }
- 
+
   }
 }

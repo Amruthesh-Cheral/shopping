@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 })
 export class ProductsService {
   cartData = new EventEmitter<product[]>;
-  
+
   constructor(private http: HttpClient) { }
 
   addProduct(data: any) {
@@ -38,6 +38,7 @@ export class ProductsService {
   searchProducts(query: string) {
     return this.http.get<product[]>(`http://localhost:3000/products?q=${{ query }}`)
   }
+
   addTocartSer(data: product) {
     let cartData = [];
     let localData = localStorage.getItem('localCart');
@@ -50,4 +51,16 @@ export class ProductsService {
     }
     this.cartData.emit(cartData)
   }
+
+  // REMOVE CART SERVICE
+  removeCart(productId: any) {
+    let cartData = localStorage.getItem('localCart');
+    if (cartData) {
+      let items: product[] = JSON.parse(cartData);
+      items = items.filter((item: product) => productId! == item.id)
+      // localStorage.setItem('localCart', JSON.stringify(items))
+      console.log(localStorage.setItem('localCart', JSON.stringify(items)));
+    }
+  }
+  // REMOVE CART SERVICE
 }

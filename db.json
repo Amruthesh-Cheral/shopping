@@ -42,6 +42,24 @@
       "productCategory": "mobile",
       "productDescription": "slider ",
       "productURL": "https://i.gadgets360cdn.com/products/large/Realme-12-Pro-Plus-5G-DB-709x800-1706525405.jpg"
+    },
+    {
+      "id": "273a",
+      "productName": "d2 LINE",
+      "productPrice": "2400",
+      "productColor": "pink",
+      "productCategory": "dress",
+      "productDescription": "premium brand",
+      "productURL": "https://d2line.com/thatlook/wp-content/uploads/sites/4/2023/02/Untitled-design-4-800x600.png"
+    },
+    {
+      "id": "726c",
+      "productName": "Gucci",
+      "productPrice": "4300",
+      "productColor": "black",
+      "productCategory": "dress",
+      "productDescription": "premium brand",
+      "productURL": "https://www.worldfashionexchange.com/blog/wp-content/uploads/2024/01/GUCCI.webp"
     }
   ]
 }

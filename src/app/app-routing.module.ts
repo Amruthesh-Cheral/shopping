@@ -11,37 +11,33 @@ import { UserAuthComponent } from './user-auth/user-auth.component';
 
 const routes: Routes = [
   {
-    path:'home',
-    component : HomeComponent
+    path: 'home',
+    component: HomeComponent
   },
   {
-    path : 'seller-auth',
-    component : SellerAuthComponent
+    path: 'seller-auth',
+    component: SellerAuthComponent
   },
   {
-    path : 'seller-home',
-    component : SellerHomeComponent,canActivate:[authGuard]
+    path: 'seller-home',
+    component: SellerHomeComponent, canActivate: [authGuard]
   },
   {
-    path : 'sell-add-products',
-    component : SellerAddProductComponent, canActivate:[authGuard]
+    path: 'sell-add-products',
+    component: SellerAddProductComponent
   },
   {
-    path : 'details/:productId',
-    component : ProductDetailsComponent
+    path: 'seller-update/:id',
+    component: SellerUpdateProductComponent, canActivate: [authGuard]
   },
   {
-    path : 'seller-update/:id',
-    component : SellerUpdateProductComponent,
-    canActivate:[authGuard]
+    path: 'details/:productId',
+    component: ProductDetailsComponent
   },
-  // {
-  //   path:'details/:productId',
-  //   component : ProductDetailsComponent
-  // },
+
   {
-    path:'user-auth',
-    component : UserAuthComponent
+    path: 'user-auth',
+    component: UserAuthComponent
   }
 ];
 

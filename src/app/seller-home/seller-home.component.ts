@@ -20,7 +20,7 @@ export class SellerHomeComponent implements OnInit {
       this.allProducts = list
     })
   }
-  deleteBtn(e: number) {
+  deleteBtn(e: any) {
     this.product.deleteProduct(e).subscribe(res => {
       console.log('Data deleted successfully:', res);
       this.allProductsList()
