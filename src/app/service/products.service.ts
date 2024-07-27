@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class ProductsService {
-  cartData = new EventEmitter<product[] | []>
+  cartData = new EventEmitter<product[]>;
   
   constructor(private http: HttpClient) { }
 
@@ -48,5 +48,6 @@ export class ProductsService {
       cartData.push(data);
       localStorage.setItem('localCart', JSON.stringify(cartData))
     }
+    this.cartData.emit(cartData)
   }
 }

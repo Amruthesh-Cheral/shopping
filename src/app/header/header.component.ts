@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ProductsService } from '../service/products.service';
 
 @Component({
   selector: 'app-header',
@@ -11,7 +12,7 @@ export class HeaderComponent implements OnInit {
   sellerName: string = ''
   userName: string = '';
   cartCount: number = 0;
-  constructor(private route: Router) { }
+  constructor(private route: Router, private product : ProductsService) { }
   ngOnInit() {
     this.route.events.subscribe((val: any) => {
       if (val.url) {
@@ -35,6 +36,10 @@ export class HeaderComponent implements OnInit {
     if(localCart){
       this.cartCount = JSON.parse(localCart).length
     }
+
+    this.product.cartData.subscribe((items) =>{
+      this.cartCount = items.length
+    })
     
   }
   logOut() {
