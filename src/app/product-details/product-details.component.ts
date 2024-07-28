@@ -24,15 +24,32 @@ export class ProductDetailsComponent implements OnInit {
       let cartData = localStorage.getItem('localCart');
       if (productId && cartData) {
         let item = JSON.parse(cartData);
-        item = item.filter((item: product) =>
-          productId == item.id.toString())
+        item = item.filter((item: product) =>productId == item.id.toString())
         if (item.length) {
           this.addRemoveBtn = false;
         } else {
           this.addRemoveBtn = true;
         }
-
       }
+
+      let user = localStorage.getItem('user');
+      if (user) {
+        let userId = user && JSON.parse(user)[0].id;
+        this.product.getAllCartItems(userId);
+        this.product.cartData.subscribe((res) => {
+          console.log(res,'resresresersresre');
+          res.filter((item: product) => {
+            let btnItems = productId?.toString() === item.productId?.toString()
+            console.log(productId?.toString(),item.productId?.toString());
+            if (btnItems) {
+              this.addRemoveBtn = false;
+            }
+          })
+        })
+      }
+
+
+
     })
   }
   // ADD COUNT
@@ -52,26 +69,27 @@ export class ProductDetailsComponent implements OnInit {
       if (!localStorage.getItem('user')) {
         this.product.addTocartSer(this.productData)
         this.addRemoveBtn = false;
-        console.warn('user is there');
+        // console.warn('user is there');
       } else {
         let user = localStorage.getItem('user');
         let userId = user && JSON.parse(user)[0].id;
-        console.log(this.productData.id);
-        
+        // console.log(this.productData.id);
+
         let dataUser: cart = {
           ...this.productData,
           userId,
           productId: this.productData.id
         }
         delete dataUser.id;
-        this.product.addtoCart(dataUser).subscribe((data)=>{
+        this.product.addtoCart(dataUser).subscribe((data) => {
           if (data) {
-              alert("cart items added")
-          }else{
-            
+            this.product.getAllCartItems(userId);
+            this.addRemoveBtn = false;
+          } else {
+
           }
         })
-        console.warn(dataUser);
+        // console.warn(dataUser);
       }
 
     }

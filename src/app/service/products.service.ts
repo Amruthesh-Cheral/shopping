@@ -38,18 +38,28 @@ export class ProductsService {
   searchProducts(query: string) {
     return this.http.get<product[]>(`http://localhost:3000/products?q=${{ query }}`)
   }
+  getAllCartItems(userId: any) {
+    return this.http.get<product[]>(`http://localhost:3000/cart?userId=` + userId, { observe: 'response' }).subscribe((res) => {
+      console.log(res, res.body, "uuuuuuuuu");
+      if (res && res.body) {
+        this.cartData.emit(res.body)
+      }
+    })
+  }
+
 
   addTocartSer(data: product) {
     let cartData = [];
     let localData = localStorage.getItem('localCart');
     if (!localData) {
       localStorage.setItem('localCart', JSON.stringify([data]))
+      this.cartData.emit([data])
     } else {
       cartData = JSON.parse(localData)
       cartData.push(data);
       localStorage.setItem('localCart', JSON.stringify(cartData))
+      this.cartData.emit(cartData)
     }
-    this.cartData.emit(cartData)
   }
 
   // REMOVE CART SERVICE
@@ -57,15 +67,21 @@ export class ProductsService {
     let cartData = localStorage.getItem('localCart');
     if (cartData) {
       let items: product[] = JSON.parse(cartData);
-      items = items.filter((item: product) =>  productId !== item.id)
+      items = items.filter((item: product) => productId !== item.id)
       localStorage.setItem('localCart', JSON.stringify(items))
       this.cartData.emit(items)
     }
   }
   // REMOVE CART SERVICE
   // ADD CART ALERT
-    addtoCart(cartData:cart){
-      return this.http.post('http://localhost:3000/cart',cartData);
-    }
+  addtoCart(cartData: cart) {
+    return this.http.post('http://localhost:3000/cart', cartData);
+  }
   // ADD CART ALERT
+
+  // REMOVE TO CART
+  removeToCart() {
+
+  }
+  // REMOVE TO CART
 }

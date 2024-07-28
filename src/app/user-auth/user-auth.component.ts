@@ -1,6 +1,8 @@
 import { Component, EventEmitter } from '@angular/core';
-import { login, signUp } from '../data-types';
+import { cart, login, product, signUp } from '../data-types';
 import { UserService } from '../service/user.service';
+import { HttpClient } from '@angular/common/http';
+import { ProductsService } from '../service/products.service';
 
 @Component({
   selector: 'app-user-auth',
@@ -11,10 +13,11 @@ export class UserAuthComponent {
   signLogin: boolean = true;
   authError: string = '';
   isLoginError = new EventEmitter<boolean>(false);
-  constructor(private user: UserService) { }
+  constructor(private user: UserService, private product: ProductsService) { }
 
   ngOnInit(): void {
     this.user.userAuthReload()
+    // this.localCartRemoteCart()
   }
 
   userSignUp(data: signUp) {
@@ -24,14 +27,46 @@ export class UserAuthComponent {
   loginUser(data: login) {
     this.authError = '';
     this.user.userLogin(data);
-    this.user.invalidUserAuth.subscribe((res)=>{
-      console.log("apple",res);
-      if(res){
-        this.authError =" plz enter valid user details"
+    this.user.invalidUserAuth.subscribe((res) => {
+      if (res) {
+        this.authError = " User not found"
+      } else {
+        this.localCartRemoteCart()
       }
     })
 
   }
+
+  localCartRemoteCart() {
+    let savedItems: product[] = JSON.parse(localStorage.getItem('localCart') || '{}');
+    let user = localStorage.getItem('user');
+    let userId = user && JSON.parse(user)[0].id;
+    if (savedItems) {
+      savedItems.forEach((product: product, index) => {
+        let cardData: cart = {
+          ...product,
+          productId: product.id,
+          userId
+        }
+
+        delete cardData.id;
+        setTimeout(() => {
+          this.product.addtoCart(cardData).subscribe((res) => {
+            if (res) {
+              console.log("items stored in dB");
+            }
+          })
+          if (savedItems.length === index + 1) {
+            localStorage.removeItem('localCart');
+            console.log("removed alllll ");
+          }
+        }, 500);
+        console.log(cardData);
+      })
+    }
+    this.product.getAllCartItems(userId)
+  }
+
   alreadyAcc() {
     this.signLogin = !this.signLogin
   }
