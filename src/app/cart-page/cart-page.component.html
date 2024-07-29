@@ -6,15 +6,15 @@
                 <h4><span>Cart (</span><span>{{cartData?.length}}</span><span> items)</span></h4>
                 <div class="mt-2 store-item bottom-line pb-3">
                     <div class="row">
-                        <div class="col-lg-3"><img class="image-store"
-                                src="{{item.productURL}}"
-                                alt="Blue Hoodie"></div>
+                        <div class="col-lg-3"><img class="image-store" src="{{item.productURL}}" alt="Blue Hoodie">
+                        </div>
                         <div class="col-lg-9">
                             <div class="mt-3 mt-lg-0 d-flex align-items-center justify-content-between">
                                 <h4>{{item.productName}}</h4>
                             </div>
                             <div class="list-store d-flex align-items-center justify-content-between">
-                                <p class="p-note"><span>(</span><span>Note, {{item.quantinty}} piece</span><span>)</span></p>
+                                <p class="p-note"><span>(</span><span>Note, {{item.quantinty}}
+                                        piece</span><span>)</span></p>
                             </div>
                             <div class="list-store d-flex align-items-center justify-content-between">
                                 <div class=" d-flex gap-2"><button type="button"
@@ -55,7 +55,7 @@
                                         <p>Delivery</p>
                                         <p>${{priceSummary.delivery}}</p>
                                     </div>
-                    
+
                                     <div class="list-store d-flex align-items-center justify-content-between">
                                         <p>Shipping</p>
                                         <p>Gratis</p>
@@ -73,8 +73,8 @@
                                 </div>
                             </div>
                             <div class="mt-1 row">
-                                <div class=""><button type="button" class="w-100 btn btn-md btn-primary btn-block"
-                                       >Go
+                                <div class=""><button type="button" (click)="checkOut()"
+                                        class="w-100 btn btn-md btn-primary btn-block">Go
                                         To Checkout</button></div>
                             </div>
                         </div>
