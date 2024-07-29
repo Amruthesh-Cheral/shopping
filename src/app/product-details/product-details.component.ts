@@ -12,6 +12,7 @@ export class ProductDetailsComponent implements OnInit {
   productData: product | undefined;
   productQuantity: number = 1;
   addRemoveBtn: boolean = true;
+  cartData2!: product | undefined;
   constructor(private activateRoute: ActivatedRoute, private product: ProductsService) {
 
   }
@@ -24,7 +25,7 @@ export class ProductDetailsComponent implements OnInit {
       let cartData = localStorage.getItem('localCart');
       if (productId && cartData) {
         let item = JSON.parse(cartData);
-        item = item.filter((item: product) =>productId == item.id.toString())
+        item = item.filter((item: product) => productId == item.id.toString())
         if (item.length) {
           this.addRemoveBtn = false;
         } else {
@@ -36,15 +37,16 @@ export class ProductDetailsComponent implements OnInit {
       if (user) {
         let userId = user && JSON.parse(user)[0].id;
         this.product.getAllCartItems(userId);
+
         this.product.cartData.subscribe((res) => {
-          console.log(res,'resresresersresre');
-          res.filter((item: product) => {
-            let btnItems = productId?.toString() === item.productId?.toString()
-            console.log(productId?.toString(),item.productId?.toString());
-            if (btnItems) {
-              this.addRemoveBtn = false;
-            }
-          })
+          let item = res.filter((item: product) =>
+            productId?.toString() === item.productId?.toString(), console.log(productId?.toString()))
+          console.log(item, 'btnItemsbtnItems');
+          if (item.length) {
+            this.cartData2 = item[0]
+            this.addRemoveBtn = false;
+          }
+
         })
       }
 
@@ -85,8 +87,6 @@ export class ProductDetailsComponent implements OnInit {
           if (data) {
             this.product.getAllCartItems(userId);
             this.addRemoveBtn = false;
-          } else {
-
           }
         })
         // console.warn(dataUser);
@@ -97,9 +97,21 @@ export class ProductDetailsComponent implements OnInit {
   // ADD TO CART ITEMS
 
   // REMOVE CART ITEMS
-  removeCart(product: any) {
-    this.product.removeCart(product);
-    this.addRemoveBtn = true;
+  removeCart(productId: any) {
+
+    if (!localStorage.getItem('user')) {
+      this.product.removeCart(productId);
+    } else {
+      let user = localStorage.getItem('user');
+      let userId = user && JSON.parse(user)[0].id;
+      this.cartData2 && this.product.removeToCart(this.cartData2?.id).subscribe((res) => {
+        if (res) {
+          this.product.getAllCartItems(userId);
+          
+        }
+      })
+      this.addRemoveBtn = true;
+    }
   }
   // REMOVE CART ITEMS
 }

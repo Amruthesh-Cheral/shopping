@@ -40,7 +40,7 @@ export class ProductsService {
   }
   getAllCartItems(userId: any) {
     return this.http.get<product[]>(`http://localhost:3000/cart?userId=` + userId, { observe: 'response' }).subscribe((res) => {
-      console.log(res, res.body, "uuuuuuuuu");
+      // console.log(res, res.body, "uuuuuuuuu");
       if (res && res.body) {
         this.cartData.emit(res.body)
       }
@@ -80,8 +80,8 @@ export class ProductsService {
   // ADD CART ALERT
 
   // REMOVE TO CART
-  removeToCart() {
-
+  removeToCart(productId: any) {
+    return this.http.delete(`http://localhost:3000/cart/`+productId);
   }
   // REMOVE TO CART
 }

@@ -12,7 +12,7 @@ export class HeaderComponent implements OnInit {
   sellerName: string = ''
   userName: string = '';
   cartCount: number = 0;
-  constructor(private route: Router, private product : ProductsService) { }
+  constructor(private route: Router, private product: ProductsService) { }
   ngOnInit() {
     this.route.events.subscribe((val: any) => {
       if (val.url) {
@@ -26,6 +26,7 @@ export class HeaderComponent implements OnInit {
           let userStore = localStorage.getItem('user')
           let userJsonVal = userStore && JSON.parse(userStore)
           this.userName = userJsonVal?.name;
+          this.product.getAllCartItems(userJsonVal.id);
         } else {
           this.menuType = 'default'
         }
@@ -33,14 +34,14 @@ export class HeaderComponent implements OnInit {
     })
 
     let localCart = localStorage.getItem(`localCart`);
-    if(localCart){
+    if (localCart) {
       this.cartCount = JSON.parse(localCart).length
     }
 
-    this.product.cartData.subscribe((items) =>{
+    this.product.cartData.subscribe((items) => {
       this.cartCount = items.length
     })
-    
+
   }
   logOut() {
     localStorage.removeItem('seller');

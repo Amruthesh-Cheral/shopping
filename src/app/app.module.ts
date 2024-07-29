@@ -13,6 +13,7 @@ import { SellerAddProductComponent } from './seller-add-product/seller-add-produ
 import { SellerUpdateProductComponent } from './seller-update-product/seller-update-product.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
 import { UserAuthComponent } from './user-auth/user-auth.component';
+import { CartPageComponent } from './cart-page/cart-page.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { UserAuthComponent } from './user-auth/user-auth.component';
     SellerAddProductComponent,
     SellerUpdateProductComponent,
     ProductDetailsComponent,
-    UserAuthComponent
+    UserAuthComponent,
+    CartPageComponent
   ],
   imports: [
     BrowserModule,
