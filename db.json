@@ -99,5 +99,14 @@
       "productDescription": "premium brand",
       "productURL": "https://www.worldfashionexchange.com/blog/wp-content/uploads/2024/01/GUCCI.webp"
     }
+  ],
+  "orders": [
+    {
+      "id": "6d75",
+      "email": "amrutheshc@gmail.com",
+      "address": "calicut",
+      "contact": "9778787878",
+      "totalPrice": 30804
+    }
   ]
 }
