@@ -17,7 +17,7 @@
   ],
   "cart": [
     {
-      "id": "733e",
+      "id": "ebdb",
       "productName": "Gucci",
       "productPrice": "4300",
       "productColor": "black",
@@ -29,40 +29,28 @@
       "productId": "726c"
     },
     {
-      "id": "4022",
+      "id": "db22",
       "productName": "d2 LINE",
       "productPrice": "2400",
       "productColor": "pink",
       "productCategory": "dress",
       "productDescription": "premium brand",
       "productURL": "https://d2line.com/thatlook/wp-content/uploads/sites/4/2023/02/Untitled-design-4-800x600.png",
-      "quantinty": 6,
-      "productId": "273a",
-      "userId": null
-    },
-    {
-      "id": "809c",
-      "productName": "motorolla 123",
-      "productPrice": "292929",
-      "productColor": "blue",
-      "productCategory": "mobile",
-      "productDescription": "looking awsome",
-      "productURL": "https://rukminim2.flixcart.com/image/850/1000/xif0q/mobile/e/y/n/pixel-8a-ga04432-in-google-original-imahyn3mqzdbzywg.jpeg?q=90&crop=false",
-      "quantinty": 1,
-      "productId": "7cca",
-      "userId": null
-    },
-    {
-      "id": "0056",
-      "productName": "Gucci",
-      "productPrice": "4300",
-      "productColor": "black",
-      "productCategory": "dress",
-      "productDescription": "premium brand",
-      "productURL": "https://www.worldfashionexchange.com/blog/wp-content/uploads/2024/01/GUCCI.webp",
       "quantinty": 1,
       "userId": "322d",
-      "productId": "726c"
+      "productId": "273a"
+    },
+    {
+      "id": "ffde",
+      "productName": "oppo 2024",
+      "productPrice": "12000",
+      "productColor": "green",
+      "productCategory": "mobile",
+      "productDescription": "image quality",
+      "productURL": "https://www.oppo.com/content/dam/oppo-campaign-site/in/events/oppo-product/image-link/march-2023/OPPO_F27_Pro+_5G_Midnight_Navy_frontback_1200x1200.jpg",
+      "quantinty": 2,
+      "userId": "322d",
+      "productId": "1da8"
     }
   ],
   "products": [
