@@ -34,13 +34,11 @@ export class CartPageComponent implements OnInit {
       this.priceSummary.discount = price / 10;
       this.priceSummary.tax = price / 10;
       this.priceSummary.delivery = 100;
-      this.priceSummary.total = price + (price / 10) + 100 - (price / 10);
+      this.priceSummary.total = price +  (price / 10) + 100 - (price / 10);
     })
   }
 
-  checkOut() {
-    console.log('clicked');
-    
+  checkOut() {    
     this.router.navigate(['./check-out'])
   }
 }

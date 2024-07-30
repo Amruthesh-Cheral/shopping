@@ -96,4 +96,16 @@ orderNow(data:order){
   return this.http.post('http://localhost:3000/orders', data);
 }
 // ORDER NOW
+// GET ALL ORDERS
+getOrders(){
+  let userStore = localStorage.getItem('user');
+    let userData = userStore && JSON.parse(userStore)[0];    
+    return this.http.get<order[]>(`http://localhost:3000/orders?userId=`+userData.id);
+}
+// GET ALL ORDERS
+// CANCEL ORDER
+cancelOrder(productId:order){
+  return this.http.delete(`http://localhost:3000/orders/`+productId);
+}
+// CANCEL ORDER
 }

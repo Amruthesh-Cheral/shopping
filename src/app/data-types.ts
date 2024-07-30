@@ -38,5 +38,11 @@ export interface priceSummary {
     total: number;
 }
 export interface order {
-    email: string, address: string, contact: string,userId:string,totalPrice:number 
+    email: string,
+    address: string,
+    contact: string,
+    userId: string,
+    totalPrice: number,
+    id: string | undefined,
+    productURL: string
 }

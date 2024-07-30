@@ -41,14 +41,14 @@
       "productId": "273a"
     },
     {
-      "id": "ffde",
+      "id": "4033",
       "productName": "oppo 2024",
       "productPrice": "12000",
       "productColor": "green",
       "productCategory": "mobile",
       "productDescription": "image quality",
       "productURL": "https://www.oppo.com/content/dam/oppo-campaign-site/in/events/oppo-product/image-link/march-2023/OPPO_F27_Pro+_5G_Midnight_Navy_frontback_1200x1200.jpg",
-      "quantinty": 2,
+      "quantinty": 1,
       "userId": "322d",
       "productId": "1da8"
     }
@@ -102,11 +102,20 @@
   ],
   "orders": [
     {
-      "id": "6d75",
-      "email": "amrutheshc@gmail.com",
-      "address": "calicut",
-      "contact": "9778787878",
-      "totalPrice": 30804
+      "id": "379a",
+      "email": "amrutheshamru@gmail.com",
+      "address": "Paravil house",
+      "contact": "09746456992",
+      "totalPrice": 18803,
+      "productURL": "https://www.oppo.com/content/dam/oppo-campaign-site/in/events/oppo-product/image-link/march-2023/OPPO_F27_Pro+_5G_Midnight_Navy_frontback_1200x1200.jpg"
+    },
+    {
+      "id": "f08e",
+      "email": "aaaa",
+      "address": "aaa",
+      "contact": "aaa",
+      "totalPrice": 18803,
+      "productURL": "https://www.oppo.com/content/dam/oppo-campaign-site/in/events/oppo-product/image-link/march-2023/OPPO_F27_Pro+_5G_Midnight_Navy_frontback_1200x1200.jpg"
     }
   ]
 }

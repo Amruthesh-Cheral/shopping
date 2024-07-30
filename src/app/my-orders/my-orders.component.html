@@ -1,1 +1,44 @@
-<p>my-orders works!</p>
+<div class="table-responsive mt-5">
+    <div class="no-footer">
+        <table class="table border-top dataTable no-footer dtr-column"  >
+            <thead>
+                <tr>
+                    <th style="width: 18px;">
+                        <input type="checkbox" class="form-check-input">
+                    </th>
+                    <th style="width: 15px;">Products</th>
+                    <th class="w-50" style="width: 150px;"></th>
+                    <th class="w-25">Order ID</th>
+                    <th class="w-25">Price</th>
+                    <th class="w-25">Status</th>
+                    <th class="">Action
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of orderData">
+                    <td style="display: none;"></td>
+                    <td><input type="checkbox" class="form-check-input"></td>
+                    <td>
+                        <div class="d-flex justify-content-start align-items-center text-nowrap">
+                            <div class="avatar-wrapper">
+                                <div class="avatar avatar-sm me-3"><img src="{{item.productURL}}" alt="product"
+                                        class="rounded-2"></div>
+                            </div>
+                        </div>
+                    </td>
+                    <td>{{item.email}}</td>
+                    <td>
+                        <div class="d-flex flex-column">
+                            <h6 class="text-heading mb-0">#{{item.id}}</h6>
+                        </div>
+                    </td>
+                    <td><span>${{item.totalPrice}}</span></td>
+                    <td><span class="text-body">Pending</span></td>
+                    <td><span class="text-body"><button class="btn btn-primary text-nowrap" (click)="cancelOrder(item.id)" type="submit"> Cancel
+                                Order</button></span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
