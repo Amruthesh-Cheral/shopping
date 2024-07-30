@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductsService } from '../service/products.service';
-import { cart, priceSummary } from '../data-types';
+import { cart, order, priceSummary, product } from '../data-types';
 import { Router } from '@angular/router';
 
 @Component({
@@ -34,11 +34,16 @@ export class CartPageComponent implements OnInit {
       this.priceSummary.discount = price / 10;
       this.priceSummary.tax = price / 10;
       this.priceSummary.delivery = 100;
-      this.priceSummary.total = price +  (price / 10) + 100 - (price / 10);
+      this.priceSummary.total = price + (price / 10) + 100 - (price / 10);
     })
   }
 
-  checkOut() {    
+  checkOut() {
     this.router.navigate(['./check-out'])
+  }
+  removeItem(id: any) {  
+    this.product.removeToCart(id).subscribe((res) => {
+      console.log(res);
+    });
   }
 }

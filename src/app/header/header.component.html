@@ -20,7 +20,7 @@
                     <a class="nav-link" routerLink="./user-auth">Login / SignUP</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" routerLink="./cart-page"><span><i class="fa-solid fa-cart-shopping"></i></span> ({{cartCount}})</a>
+                    <a class="nav-link" [routerLink]="cartCount>0?'./cart-page':null"><span><i class="fa-solid fa-cart-shopping"></i></span> ({{cartCount}})</a>
                 </li>
             </ul>
 
@@ -46,7 +46,7 @@
                     <a class="nav-link">{{userName | titlecase}}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" routerLink="./cart-page"><span><i class="fa-solid fa-cart-shopping"></i></span> ({{cartCount}})</a>
+                    <a class="nav-link" [routerLink]="cartCount>0?'./cart-page':null"><span><i class="fa-solid fa-cart-shopping"></i></span> ({{cartCount}})</a>
                 </li>
             </ul>
 

@@ -17,19 +17,7 @@
   ],
   "cart": [
     {
-      "id": "ebdb",
-      "productName": "Gucci",
-      "productPrice": "4300",
-      "productColor": "black",
-      "productCategory": "dress",
-      "productDescription": "premium brand",
-      "productURL": "https://www.worldfashionexchange.com/blog/wp-content/uploads/2024/01/GUCCI.webp",
-      "quantinty": 1,
-      "userId": "322d",
-      "productId": "726c"
-    },
-    {
-      "id": "db22",
+      "id": "30df",
       "productName": "d2 LINE",
       "productPrice": "2400",
       "productColor": "pink",
@@ -39,18 +27,6 @@
       "quantinty": 1,
       "userId": "322d",
       "productId": "273a"
-    },
-    {
-      "id": "4033",
-      "productName": "oppo 2024",
-      "productPrice": "12000",
-      "productColor": "green",
-      "productCategory": "mobile",
-      "productDescription": "image quality",
-      "productURL": "https://www.oppo.com/content/dam/oppo-campaign-site/in/events/oppo-product/image-link/march-2023/OPPO_F27_Pro+_5G_Midnight_Navy_frontback_1200x1200.jpg",
-      "quantinty": 1,
-      "userId": "322d",
-      "productId": "1da8"
     }
   ],
   "products": [
