@@ -5,6 +5,12 @@
       "name": "amru",
       "email": "amrutest99@gmail.com",
       "password": "1234"
+    },
+    {
+      "id": "b15b",
+      "name": "amrutest",
+      "email": "amru@gmail.com",
+      "password": "1mru"
     }
   ],
   "user": [
@@ -17,16 +23,28 @@
   ],
   "cart": [
     {
-      "id": "30df",
-      "productName": "d2 LINE",
-      "productPrice": "2400",
-      "productColor": "pink",
-      "productCategory": "dress",
-      "productDescription": "premium brand",
-      "productURL": "https://d2line.com/thatlook/wp-content/uploads/sites/4/2023/02/Untitled-design-4-800x600.png",
+      "id": "ef1d",
+      "productName": "oppo 2024",
+      "productPrice": "12000",
+      "productColor": "green",
+      "productCategory": "mobile",
+      "productDescription": "image quality",
+      "productURL": "https://www.oppo.com/content/dam/oppo-campaign-site/in/events/oppo-product/image-link/march-2023/OPPO_F27_Pro+_5G_Midnight_Navy_frontback_1200x1200.jpg",
       "quantinty": 1,
       "userId": "322d",
-      "productId": "273a"
+      "productId": "1da8"
+    },
+    {
+      "id": "a00b",
+      "productName": "motorolla 123",
+      "productPrice": "292929",
+      "productColor": "blue",
+      "productCategory": "mobile",
+      "productDescription": "looking awsome",
+      "productURL": "https://rukminim2.flixcart.com/image/850/1000/xif0q/mobile/e/y/n/pixel-8a-ga04432-in-google-original-imahyn3mqzdbzywg.jpeg?q=90&crop=false",
+      "quantinty": 1,
+      "userId": "322d",
+      "productId": "7cca"
     }
   ],
   "products": [
@@ -76,22 +94,5 @@
       "productURL": "https://www.worldfashionexchange.com/blog/wp-content/uploads/2024/01/GUCCI.webp"
     }
   ],
-  "orders": [
-    {
-      "id": "379a",
-      "email": "amrutheshamru@gmail.com",
-      "address": "Paravil house",
-      "contact": "09746456992",
-      "totalPrice": 18803,
-      "productURL": "https://www.oppo.com/content/dam/oppo-campaign-site/in/events/oppo-product/image-link/march-2023/OPPO_F27_Pro+_5G_Midnight_Navy_frontback_1200x1200.jpg"
-    },
-    {
-      "id": "f08e",
-      "email": "aaaa",
-      "address": "aaa",
-      "contact": "aaa",
-      "totalPrice": 18803,
-      "productURL": "https://www.oppo.com/content/dam/oppo-campaign-site/in/events/oppo-product/image-link/march-2023/OPPO_F27_Pro+_5G_Midnight_Navy_frontback_1200x1200.jpg"
-    }
-  ]
+  "orders": []
 }

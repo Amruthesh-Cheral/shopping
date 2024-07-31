@@ -1,37 +1,47 @@
 <div class="form-main">
-    <div class="outer" *ngIf="!signLogin">
-        <form #sellerSignup="ngForm" (ngSubmit)="signUp(sellerSignup.value)">
-            <h1>Seller Sign Up</h1>
-            <p>Enter Name</p>
-            <input class="in" type="text" placeholder="Enter Name"  ngModel name="name"/>
-            <p>Enter Confirm Password</p>
-            <input class="in" type="password" placeholder="Enter Password" ngModel name="password"/>
-            <p>Enter Mail ID</p>
-            <input class="in" type="email" placeholder="Enter Email" ngModel name="email"/>
-            <br>
-           <div class="pb-4 text-center w-100">
-            <a (click)="alreadyAcc()">Already have an account ?  Click to Login</a>
-           </div>
-            <button type="submit" class="btn btn-success">Sign Up</button>
-        </form>
+    <!-- SELLER SIGNUP FORM -->
+    <div class="outer mt-2" *ngIf="!signLogin">
+        <div class="white-popup lr-popup">
+            <h4>Registration</h4>
+            <form class="subscribe-popup-form" #sellerSignup="ngForm" (ngSubmit)="signUp(sellerSignup.value)">
+                <input type="text" required ngModel name="name" placeholder="Enter Your name">
+                <input type="email" required ngModel name="email" placeholder="Enter Your Email">
+                <input type="password" required ngModel name="password" placeholder="Enter Your Password">
+                <input type="password" required ngModel name="password" placeholder="Confirmation Password">
+                <div class="form-check">
+                    <label>I accept the terms and conditions
+                        <input class="defult-check" type="checkbox" checked="checked">
+                        <span class="checkmark"></span>
+                    </label>
+                </div>
+                <button class="btn btn-primary" type="submit" title="Subscribe">Register</button>
+            </form>
+            <a (click)="alreadyAcc()" class="mt-3 sign-up open-popup-link text-center w-100">Click here to Sign In</a>
+        </div>
     </div>
-    <div class="outer" *ngIf="signLogin">
-        <form #sellerLogin="ngForm" (ngSubmit)="login(sellerLogin.value)">
-            <h1>Seller Login</h1>
+    <!-- SELLER SIGNUP FORM -->
+    <!-- SELLER LOGIN FORM -->
+    <div class="outer mt-2" *ngIf="signLogin">
+        <div class="white-popup text-center">
+            <h4>Seller Login</h4>
             <div class="text-center w-100">
                 <h6 class="text-danger"> {{authError}}</h6>
             </div>
-            <p>Enter Name</p>
-            <input class="in" type="text" placeholder="Enter Name"  ngModel name="name"/>
-            <p>Enter Confirm Password</p>
-            <input class="in" type="password" placeholder="Enter Password" ngModel name="password"/>
-            <br>
-           
-            <div class="pb-4 text-center w-100">
-                <a (click)="alreadyAcc()" >Create a new account</a>
-               </div>
-
-            <button type="submit" class="btn btn-success">Login</button>
-        </form>
+            <form class="subscribe-popup-form" #sellerLogin="ngForm" (ngSubmit)="login(sellerLogin.value)">
+                <input class="in" required type="text" ngModel name="name" placeholder="Enter Your Name">
+                <input class="in" required type="password" ngModel name="password" placeholder="Enter Your Password">
+                <div class="form-check text-left">
+                    <label>Remember me
+                        <input class="defult-check" type="checkbox" checked="checked">
+                        <span class="checkmark"></span>
+                    </label>
+                    <a (click)="alreadyAcc()" class="forgot-password float-right">Forgot Password ?</a>
+                </div>
+                <button class="btn btn-primary" title="Login" type="submit">Login</button>
+            </form>
+            <h6 class="mt-3">Don't have an account?</h6>
+            <a (click)="alreadyAcc()" class="sign-up open-popup-link">Click here to Sign up</a>
+        </div>
     </div>
+     <!-- SELLER LOGIN FORM -->
 </div>
