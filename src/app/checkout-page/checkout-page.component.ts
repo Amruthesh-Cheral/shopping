@@ -46,6 +46,8 @@ export class CheckoutPageComponent {
         productURL: this.productURL,
         id: undefined
       }
+      console.log(orderData,'orderDataaa');
+      
       this.product.orderNow(orderData).subscribe((res) => {
         if (res) {
           this.router.navigate(['./my-orders'])

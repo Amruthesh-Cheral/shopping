@@ -17,6 +17,8 @@ import { CartPageComponent } from './cart-page/cart-page.component';
 import { CheckoutPageComponent } from './checkout-page/checkout-page.component';
 import { MyOrdersComponent } from './my-orders/my-orders.component';
 import { FooterComponent } from './layout/footer/footer.component';
+import { CarouselModule } from 'ngx-owl-carousel-o';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -38,8 +40,9 @@ import { FooterComponent } from './layout/footer/footer.component';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule,
+    HttpClientModule,CarouselModule,
     ReactiveFormsModule,
+    BrowserAnimationsModule
   ], providers: [],
   bootstrap: [AppComponent]
 })

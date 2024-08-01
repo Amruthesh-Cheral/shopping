@@ -1,94 +1,97 @@
-<div class="pt-4 pb-4 container">
-    <h2 class="text-center">Shopping Cart</h2>
-    <div class="mt-5 gap-3 gap-md-0 gap-lg-0 row">
-        <div class="col-lg-8 col-md-7">
-            <h4><span>Cart (</span><span>{{cartData?.length}}</span><span> items)</span></h4>
-            <div class="card mb-3" *ngFor="let item of cartData">
-                <div class="mt-2 store-item bottom-line pb-3">
-                    <div class="row">
-                        <div class="col-lg-3"><img class="image-store" src="{{item.productURL}}" alt="Blue Hoodie">
-                        </div>
-                        <div class="col-lg-9">
-                            <div class="mt-3 mt-lg-0 d-flex align-items-center justify-content-between">
-                                <h4>{{item.productName}}</h4>
-                            </div>
-                            <div class="list-store d-flex align-items-center justify-content-between">
-                                <p class="p-note"><span>(</span><span>Note, {{item.quantinty}}
-                                        piece</span><span>)</span></p>
-                            </div>
-                            <div class="list-store d-flex align-items-center justify-content-between">
-                                <div class=" d-flex gap-2"><button type="button" (click)="removeItem(item.id)"
-                                        class="btn-list btn btn-xs btn-default"><i class="fa fa-trash"></i><span> Remove
-                                            Item</span></button>
-                                </div>
-                                <div class="d-flex">
-                                    <h5>${{item.productPrice}}</h5>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-        <div class="col-lg-4 col-md-5">
-            <div class="gap-3 row">
-                <div class="">
-                    <div class="card">
-                        <h4>The total amount of</h4>
-                        <div class="store-item mt-2">
-                            <div class="row">
-                                <div class="">
-                                    <div class="list-store d-flex align-items-center justify-content-between">
-                                        <p>Temporary amount</p>
-                                        <p>${{priceSummary.price}}</p>
-                                    </div>
-                                    <div class="list-store d-flex align-items-center justify-content-between">
-                                        <p>Discount</p>
-                                        <p>${{priceSummary.discount}}</p>
-                                    </div>
-                                    <div class="list-store d-flex align-items-center justify-content-between">
-                                        <p>Total Tax</p>
-                                        <p>${{priceSummary.tax}}</p>
-                                    </div>
-                                    <div class="list-store d-flex align-items-center justify-content-between">
-                                        <p>Delivery</p>
-                                        <p>${{priceSummary.delivery}}</p>
-                                    </div>
-
-                                    <div class="list-store d-flex align-items-center justify-content-between">
-                                        <p>Shipping</p>
-                                        <p>Gratis</p>
-                                    </div>
-                                    <div class="bottom-line"></div>
-                                </div>
-                            </div>
-                            <div class="mt-2 row">
-                                <div class="col-6">
-                                    <p class="p-total-label">The total amount of
-                                        (Including VAT)</p>
-                                </div>
-                                <div class="col-6">
-                                    <p class="p-total">${{priceSummary.total}}</p>
-                                </div>
-                            </div>
-                            <div class="mt-1 row">
-                                <div class=""><button type="button" (click)="checkOut()"
-                                        class="w-100 btn btn-md btn-primary btn-block">Go
-                                        To Checkout</button></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="">
-                    <div class="card">
-                        <div class="d-flex align-items-center justify-content-between">
-                            <p>Add a discount code (optional)</p>
-                            <p><i class="fa fa-chevron-down"></i></p>
-                        </div>
-                    </div>
+<section class="breadcrumbs-section background_bg" data-img-src="image/cart-breadcrumbs-img.jpg" style="background: url('assets/images/layout/cart-breadcrumbs-img.jpg') center center / cover;">
+	<div class="container">
+    	<div class="row justify-content-center">
+        	<div class="col-md-12">
+                <div class="page_title text-center position-relative">
+                	<h1>my cart</h1>
+                    <ul class="breadcrumb justify-content-center">
+                    	<li><a href="index.html">home</a></li>
+                        <li><a href="#">shop</a></li>
+                        <li><span>cart</span></li>
+                    </ul>
                 </div>
             </div>
         </div>
     </div>
-</div>
+</section>
+
+<!-- Start Cart Section -->
+<section class="cart-section pt_large">
+	<div class="container">
+        <h4><span>Cart (</span><span>{{cartData?.length}}</span><span> items)</span></h4>
+    	<div class="row">
+        	<div class="col-md-8 col-sm-12">
+            	<div class="cart-table table-responsive">
+                	<table class="table table-bordered text-center">
+                    	<thead>
+                        	<tr class="row-1">
+                            	<th class="row-title"><p>NO:</p></th>
+                            	<th class="row-title"><p>Product</p></th>
+                                <th class="row-title"><p>Product Name</p></th>
+                                <th class="row-title"><p>Quantity</p></th>
+                                <th class="row-title"><p>Subtotal</p></th>
+                                <th class="row-title"><p>Action</p></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        	<tr class="row-2" *ngFor="let item of cartData; index as i">
+                            	<td class="row-close">{{i + 1}}</td>
+                            	<td class="row-img"><img class="store-item" src="{{item.productURL}}" alt="cart-img"></td>
+                                <td class="product-name"><a>{{item.productName}}</a></td>
+                                <td class="product-total"><p>{{item.quantinty}}</p></td>
+                                <td class="product-total"><p>{{item.productPrice}}</p></td>
+                                <td class="row-close close-2" ><a (click)="removeItem(item.id)" class="pointer-events" ><i class="fa-solid fa-trash "></i></a></td>
+                            </tr>   
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="12">
+                                    <ul class="table-btn">
+                                        <li><a routerLink="./home" class="btn btn-secondary"><i class="fa fa-chevron-left"></i>Continue Shopping</a></li>
+                                        <li><a class="btn btn-primary"><i class="fa fa-refresh"></i>Update cart</a></li>
+                                    </ul>
+                                </td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-12">
+                <!-- PROMOTIONAL CODE -->
+                <div class="cart-inner-box box-1 text-center">
+                	<div class="ci-title">
+                    	<h6>Promotional code</h6>
+                    </div>
+                    <div class="ci-caption">
+                    	<p>Enter Your Coupon Code If you have one</p>
+                        <form>
+                        	<input required="" class="form-control" type="text" placeholder="Coupon Code">
+                            <button class="btn btn-secondary" type="submit">Apply Coupon Code</button>
+                        </form>
+                    </div>
+                </div>
+                 <!-- PROMOTIONAL CODE -->
+                 <!-- CART TOTAL -->
+                <div class="cart-inner-box box-2 text-center">
+                	<div class="ci-title">
+                    	<h6>Cart Total</h6>
+                    </div>
+                    <div class="ci-caption">
+                        <ul>
+                            <li>Temporary amount <span>${{priceSummary.price}}</span></li>
+                            <li>Discount <span>${{priceSummary.discount}}</span></li>
+                            <li>Total Tax<span>${{priceSummary.tax}}</span></li>
+                            <li>Delivery <span>${{priceSummary.delivery}}</span></li>
+                            <li> <b> Grand Total </b> <span> <strong> ${{priceSummary.total}}</strong> </span></li>
+                        </ul>
+                    </div>
+                    <div class="ci-btn">
+                        <a (click)="checkOut()" class="btn btn-primary btn-block rounded-0">Proceed to Checkout</a>
+                    </div>
+                </div>
+                <!-- CART TOTAL -->
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Start Cart Section -->

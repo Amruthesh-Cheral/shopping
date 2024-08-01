@@ -1,9 +1,9 @@
-<div class="row pt-5" *ngIf="productData">
-    <div class="col-md-6 col-sm-12" >
+<!-- <div class="row pt-5" *ngIf="productData">
+    <div class="col-md-6 col-sm-12">
         <img src="{{productData.productURL}}" class="img-fluid" alt="">
     </div>
-    <div class="col-md-6 col-sm-12" >
-        <h3>{{productData.productName}}  <span>$ {{productData.productPrice}}</span> </h3>
+    <div class="col-md-6 col-sm-12">
+        <h3>{{productData.productName}} <span>$ {{productData.productPrice}}</span> </h3>
         <p> Category : {{productData.productCategory}}</p>
         <p class="color" [style.backgroundColor]="productData.productColor"></p>
         <p>Description : {{productData.productDescription}}</p>
@@ -16,4 +16,434 @@
             <button (click)="handleClick('plus')" [disabled]="productQuantity === 1">-</button>
         </div>
     </div>
-</div>
+</div> -->
+
+<!-- PRODUCT DETAILS -->
+<section class="products-detail-section pt_large" *ngIf="productData">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-5">
+                <div class="product-image">
+                    <img class="product_img" src="{{productData.productURL}}" data-zoom-image="image/product1.png">
+                </div>
+                <div id="pr_item_gallery"
+                    class="product_gallery_item owl-thumbs-slider owl-carousel owl-theme owl-loaded owl-drag">
+                    <div class="owl-stage-outer">
+                        <div class="owl-stage d-flex"
+                            style="transform: translate3d(0px, 0px, 0px); transition: all; width: 190px;">
+                            <div class="owl-item active" style="width: 85px; margin-right: 10px;">
+                                <div class="item">
+                                    <a class="active" data-image="image/product1.png"
+                                        data-zoom-image="image/product1.png">
+                                        <img src="{{productData.productURL}}">
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="owl-item active" style="width: 85px; margin-right: 10px;">
+                                <div class="item">
+                                    <a data-image="image/product2.png" data-zoom-image="image/product2.png">
+                                        <img src="{{productData.productURL}}">
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="owl-nav disabled"><button type="button" role="presentation" class="owl-prev disabled"><i
+                                class="ion-ios-arrow-back"></i></button><button type="button" role="presentation"
+                            class="owl-next disabled"><i class="ion-ios-arrow-forward"></i></button></div>
+                    <div class="owl-dots disabled"></div>
+                </div>
+            </div>
+            <div class="col-md-7">
+                <div class="quickview-product-detail">
+                    <h2 class="box-title">{{productData.productName}} </h2>
+                    <h3 class="box-price"><del>$ {{productData.productPrice}}</del>$ {{productData.productPrice}}</h3>
+                    <p class="box-text">There are many variations of passages of Lorem Ipsum available, but the majority
+                        have suffered alteration in some form, by injected humour, or randomised words which don't look
+                        even slightly believable.</p>
+                    <p class="stock">Availability: <span>In Stock</span></p>
+                    <div class="quantity-box">
+                        <p>Quantity:</p>
+                        <div class="input-group">
+                            <input type="button" (click)="handleClick('plus')" [disabled]="productQuantity === 1"
+                                value="-" class="minus">
+                            <input class="quantity-number qty" type="text" value="{{productQuantity}}" min="1" max="10">
+                            <input type="button" (click)="handleClick('min')" value="+" class="plus">
+                        </div>
+                        <div class="quickview-cart-btn">
+                            <a class="btn btn-primary" *ngIf="addRemoveBtn" (click)="addToCart()"><i
+                                    class="fa-solid fa-cart-shopping"></i> Add To Cart</a>
+                            <a class="btn btn-primary" *ngIf="!addRemoveBtn" (click)="removeCart(productData.id)"><i
+                                    class="fa-solid fa-cart-shopping"></i> Remove To Cart</a>
+                        </div>
+                    </div>
+                    <div class="box-social-like d-sm-flex justify-content-between">
+                        <ul class="hover-icon box-like">
+                            <li><a><i class="fa fa-heart"></i></a></li>
+                            <li><a><i class="fa fa-refresh"></i></a></li>
+                        </ul>
+                        <ul class="hover-icon box-social">
+                            <li><a><i class="fa-brands fa-facebook-f"></i></a></li>
+                            <li><a><i class="fa-brands fa-twitter"></i></a></li>
+                            <li><a><i class="fa-brands fa-linkedin-in"></i></a></li>
+                            <li><a><i class="fa-brands fa-pinterest-p"></i></a></li>
+                            <li><a><i class="fa-brands fa-google-plus"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- PRODUCT DETAILS -->
+
+<!-- STRAT PRODUCT TABS -->
+<section class="products-detail-tabs">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="products-tabs">
+                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home"
+                                type="button" role="tab" aria-controls="home" aria-selected="true">Discription</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile"
+                                type="button" role="tab" aria-controls="profile" aria-selected="false">ADDITIONAL
+                                INFORMATION</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact"
+                                type="button" role="tab" aria-controls="contact" aria-selected="false">REVIEWS
+                                (2)</button>
+                        </li>
+                    </ul>
+                    <div class="tab-content" id="myTabContent">
+                        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                            <div class="tab-title">
+                                <h6>Discription</h6>
+                            </div>
+                            <div class="tab-caption">
+                                <p>There are many variations of passages of Lorem Ipsum available, but the majority have
+                                    suffered alteration in some form, by injected humour, or randomised words which
+                                    don't look even slightly believable. If you are going to use a passage of Lorem
+                                    Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of
+                                    text.</p>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                            <div class="tab-title">
+                                <h6>Additional information</h6>
+                            </div>
+                            <div class="tab-caption">
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <tbody>
+                                            <tr>
+                                                <td colspan="1">Brand</td>
+                                                <td>FairPlay</td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="1">Season</td>
+                                                <td>Spring / Summer</td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="1">Color</td>
+                                                <td>Black</td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="1">Fit</td>
+                                                <td>Comfort</td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="1">Size</td>
+                                                <td>S</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+                            <div class="tab-title">
+                                <h6>Costomer Reviews</h6>
+                            </div>
+                            <div class="tab-caption">
+                                <div class="costomer-reviews">
+                                    <div class="costomer-reviews-box">
+                                        <div class="reviews-img">
+                                            <img src="/assets/images/layout/costomer-img.jpg" alt="costomer-img">
+                                        </div>
+                                        <div class="reviews-text">
+                                            <p class="reviewer-name">admin</p>
+                                            <span class="reviews-date">September 13, 2017</span>
+                                            <p class="reviewer-text">24/7 helpdesk is also available. I Love it!</p>
+                                        </div>
+                                    </div>
+                                    <div class="costomer-reviews-box">
+                                        <div class="reviews-img">
+                                            <img src="/assets/images/layout/costomer-img.jpg" alt="costomer-img">
+                                        </div>
+                                        <div class="reviews-text">
+                                            <p class="reviewer-name">admin</p>
+                                            <span class="reviews-date">September 13, 2017</span>
+                                            <p class="reviewer-text">24/7 helpdesk is also available. I Love it!</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-caption">
+                                <div class="add-review">
+                                    <div class="tab-title">
+                                        <h6>Add a review</h6>
+                                    </div>
+                                    <form class="add-review-form">
+                                        <div class="input-1">
+                                            <input required="" class="form-control" placeholder="Enter Your Name"
+                                                value="" type="text">
+                                        </div>
+                                        <div class="input-2">
+                                            <input required="" class="form-control" placeholder="Enter Your Email"
+                                                value="" type="email">
+                                        </div>
+                                        <div class="input-3">
+                                            <textarea required="" rows="6" class="form-control"
+                                                placeholder="Enter Your Review"></textarea>
+                                        </div>
+                                        <div class="input-btn">
+                                            <button type="submit" class="btn btn-secondary">Submit</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- STRAT PRODUCT TABS -->
+
+<!-- STRAT RELATED PRODUCT SECTON -->
+<section class="related-product pb_large">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="title">
+                    <h4>RELATED PRODUCTS</h4>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="products-slider4 same-nav owl-carousel owl-theme owl-loaded owl-drag" data-margin="30"
+                    data-dots="false">
+                    <div class="owl-stage-outer owl-height" style="height: 352px;">
+                        <div class="owl-stage"
+                            style="transform: translate3d(0px, 0px, 0px); transition: all; width: 1920px;">
+                            <div class="owl-item active" style="width: 210px; margin-right: 30px;">
+                                <div class="item">
+                                    <div class="product-box common-cart-box">
+                                        <div class="product-img common-cart-img">
+                                            <img src="assets/images/products/product-img-1.jpg" alt="product-img">
+                                            <div class="hover-option">
+                                                <div class="add-cart-btn">
+                                                    <a href="#" class="btn btn-primary">Add To Cart</a>
+                                                </div>
+                                                <ul class="hover-icon">
+                                                    <li><a href="#"><i class="fa fa-heart"></i></a></li>
+                                                    <li><a href="#test-popup3" class="quickview-popup-link"><i
+                                                                class="fa fa-eye"></i></a></li>
+                                                    <li><a href="#"><i class="fa fa-refresh"></i></a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="product-info common-cart-info text-center">
+                                            <a href="product-detail.html" class="cart-name">Variable product 001</a>
+                                            <p class="cart-price"><del>$ 90.00</del>$ 78.00</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="owl-item active" style="width: 210px; margin-right: 30px;">
+                                <div class="item">
+                                    <div class="product-box common-cart-box">
+                                        <div class="product-img common-cart-img">
+                                            <img src="assets/images/products/product-img-1.jpg" alt="product-img">
+                                            <div class="hover-option">
+                                                <div class="add-cart-btn">
+                                                    <a href="#" class="btn btn-primary">Add To Cart</a>
+                                                </div>
+                                                <ul class="hover-icon">
+                                                    <li><a href="#"><i class="fa fa-heart"></i></a></li>
+                                                    <li><a href="#test-popup3" class="quickview-popup-link"><i
+                                                                class="fa fa-eye"></i></a></li>
+                                                    <li><a href="#"><i class="fa fa-refresh"></i></a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="product-info common-cart-info text-center">
+                                            <a href="product-detail.html" class="cart-name">Ornare sed consequat</a>
+                                            <p class="cart-price"><del>$ 95.00</del>$ 81.00</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="owl-item active" style="width: 210px; margin-right: 30px;">
+                                <div class="item">
+                                    <div class="product-box common-cart-box">
+                                        <div class="product-img common-cart-img">
+                                            <img src="assets/images/products/product-img-1.jpg" alt="product-img">
+                                            <div class="hover-option">
+                                                <div class="add-cart-btn">
+                                                    <a href="#" class="btn btn-primary">Add To Cart</a>
+                                                </div>
+                                                <ul class="hover-icon">
+                                                    <li><a href="#"><i class="fa fa-heart"></i></a></li>
+                                                    <li><a href="#test-popup3" class="quickview-popup-link"><i
+                                                                class="fa fa-eye"></i></a></li>
+                                                    <li><a href="#"><i class="fa fa-refresh"></i></a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="product-info common-cart-info text-center">
+                                            <a href="product-detail.html" class="cart-name">Pellentesque posuere</a>
+                                            <p class="cart-price"><del>$ 90.00</del>$ 80.00</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="owl-item active" style="width: 210px; margin-right: 30px;">
+                                <div class="item">
+                                    <div class="product-box common-cart-box">
+                                        <div class="product-img common-cart-img">
+                                            <img src="assets/images/products/product-img-1.jpg" alt="product-img">
+                                            <div class="hover-option">
+                                                <div class="add-cart-btn">
+                                                    <a href="#" class="btn btn-primary">Add To Cart</a>
+                                                </div>
+                                                <ul class="hover-icon">
+                                                    <li><a href="#"><i class="fa fa-heart"></i></a></li>
+                                                    <li><a href="#test-popup3" class="quickview-popup-link"><i
+                                                                class="fa fa-eye"></i></a></li>
+                                                    <li><a href="#"><i class="fa fa-refresh"></i></a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="product-info common-cart-info text-center">
+                                            <a href="product-detail.html" class="cart-name">Consequat posuere</a>
+                                            <p class="cart-price"><del>$ 90.00</del>$ 80.00</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="owl-item" style="width: 210px; margin-right: 30px;">
+                                <div class="item">
+                                    <div class="product-box common-cart-box">
+                                        <div class="product-img common-cart-img">
+                                            <img src="image/product-img-1.jpg" alt="product-img">
+                                            <div class="hover-option">
+                                                <div class="add-cart-btn">
+                                                    <a href="#" class="btn btn-primary">Add To Cart</a>
+                                                </div>
+                                                <ul class="hover-icon">
+                                                    <li><a href="#"><i class="fa fa-heart"></i></a></li>
+                                                    <li><a href="#test-popup3" class="quickview-popup-link"><i
+                                                                class="fa fa-eye"></i></a></li>
+                                                    <li><a href="#"><i class="fa fa-refresh"></i></a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="product-info common-cart-info text-center">
+                                            <a href="product-detail.html" class="cart-name">Variable product 001</a>
+                                            <p class="cart-price"><del>$ 90.00</del>$ 78.00</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="owl-item" style="width: 210px; margin-right: 30px;">
+                                <div class="item">
+                                    <div class="product-box common-cart-box">
+                                        <div class="product-img common-cart-img">
+                                            <img src="assets/images/products/product-img-1.jpg" alt="product-img">
+                                            <div class="hover-option">
+                                                <div class="add-cart-btn">
+                                                    <a href="#" class="btn btn-primary">Add To Cart</a>
+                                                </div>
+                                                <ul class="hover-icon">
+                                                    <li><a href="#"><i class="fa fa-heart"></i></a></li>
+                                                    <li><a href="#test-popup3" class="quickview-popup-link"><i
+                                                                class="fa fa-eye"></i></a></li>
+                                                    <li><a href="#"><i class="fa fa-refresh"></i></a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="product-info common-cart-info text-center">
+                                            <a href="product-detail.html" class="cart-name">Ornare sed consequat</a>
+                                            <p class="cart-price"><del>$ 95.00</del>$ 81.00</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="owl-item" style="width: 210px; margin-right: 30px;">
+                                <div class="item">
+                                    <div class="product-box common-cart-box">
+                                        <div class="product-img common-cart-img">
+                                            <img src="assets/images/products/product-img-1.jpg" alt="product-img">
+                                            <div class="hover-option">
+                                                <div class="add-cart-btn">
+                                                    <a href="#" class="btn btn-primary">Add To Cart</a>
+                                                </div>
+                                                <ul class="hover-icon">
+                                                    <li><a href="#"><i class="fa fa-heart"></i></a></li>
+                                                    <li><a href="#test-popup3" class="quickview-popup-link"><i
+                                                                class="fa fa-eye"></i></a></li>
+                                                    <li><a href="#"><i class="fa fa-refresh"></i></a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="product-info common-cart-info text-center">
+                                            <a href="product-detail.html" class="cart-name">Pellentesque posuere</a>
+                                            <p class="cart-price"><del>$ 90.00</del>$ 80.00</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="owl-item" style="width: 210px; margin-right: 30px;">
+                                <div class="item">
+                                    <div class="product-box common-cart-box">
+                                        <div class="product-img common-cart-img">
+                                            <img src="assets/images/products/product-img-1.jpg" alt="product-img">
+                                            <div class="hover-option">
+                                                <div class="add-cart-btn">
+                                                    <a href="#" class="btn btn-primary">Add To Cart</a>
+                                                </div>
+                                                <ul class="hover-icon">
+                                                    <li><a href="#"><i class="fa fa-heart"></i></a></li>
+                                                    <li><a href="#test-popup3" class="quickview-popup-link"><i
+                                                                class="fa fa-eye"></i></a></li>
+                                                    <li><a href="#"><i class="fa fa-refresh"></i></a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="product-info common-cart-info text-center">
+                                            <a href="product-detail.html" class="cart-name">Consequat posuere</a>
+                                            <p class="cart-price"><del>$ 90.00</del>$ 80.00</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="owl-nav disabled"><button type="button" role="presentation" class="owl-prev"><i
+                                class="fa fa-angle-left"></i></button><button type="button" role="presentation"
+                            class="owl-next"><i class="fa fa-angle-right"></i></button></div>
+                    <div class="owl-dots disabled"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- STRAT RELATED PRODUCT SECTON -->
