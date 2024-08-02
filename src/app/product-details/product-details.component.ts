@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ProductsService } from '../service/products.service';
 import { cart, product } from '../data-types';
+import { OwlOptions } from 'ngx-owl-carousel-o';
 
 @Component({
   selector: 'app-product-details',
@@ -13,8 +14,31 @@ export class ProductDetailsComponent implements OnInit {
   productQuantity: number = 1;
   addRemoveBtn: boolean = true;
   cartData2!: product | undefined;
-  constructor(private activateRoute: ActivatedRoute, private product: ProductsService) {
-
+  trendy!: product[];
+  constructor(private activateRoute: ActivatedRoute, private product: ProductsService) {}
+  customOptions: OwlOptions = {
+    loop: true,
+    mouseDrag: false,
+    touchDrag: false,
+    pullDrag: false,
+    dots: false,
+    navSpeed: 100,
+    navText: ['', ''],
+    responsive: {
+      0: {
+        items: 1
+      },
+      400: {
+        items: 2
+      },
+      740: {
+        items: 4
+      },
+      940: {
+        items: 5
+      }
+    },
+    nav: true
   }
   ngOnInit(): void {
     // GET ROUTE SLUGN NAME
@@ -40,7 +64,7 @@ export class ProductDetailsComponent implements OnInit {
 
         this.product.cartData.subscribe((res) => {
           let item = res.filter((item: product) =>
-            productId?.toString() === item.productId?.toString(), console.log(productId?.toString()))
+            productId?.toString() === item.productId?.toString())
           console.log(item, 'btnItemsbtnItems');
           if (item.length) {
             this.cartData2 = item[0]
@@ -54,6 +78,7 @@ export class ProductDetailsComponent implements OnInit {
 
     })
   }
+
   // ADD COUNT
   handleClick(val: string) {
     if (val === 'min') {
@@ -63,7 +88,6 @@ export class ProductDetailsComponent implements OnInit {
     }
   }
   // ADD COUNT
-
   // ADD TO CART ITEMS
   addToCart() {
     if (this.productData) {

@@ -1,8 +1,6 @@
 <div class="container">
-    <div class="add-products mt-5">
-
+    <div class="add-products mt-5 mb-5">
         <div class="text-center alert alert-success" *ngIf="addMsg"> {{addMsg}} </div>
-        
         <form #addProduct="ngForm" (ngSubmit)="updateProduct(addProduct.value)" >
             <div class="row">
                 <div class="col-md-6 col-sm-12 pb-3">
@@ -31,6 +29,6 @@
                 </div>
                 <button type="submit" class="btn btn-secondary">  Update Product</button>
             </div>
-          </form>
+        </form>
     </div>
 </div>

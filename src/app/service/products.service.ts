@@ -54,11 +54,13 @@ export class ProductsService {
     if (!localData) {
       localStorage.setItem('localCart', JSON.stringify([data]))
       this.cartData.emit([data])
+      console.log(this.cartData.emit([data]));
     } else {
       cartData = JSON.parse(localData)
       cartData.push(data);
       localStorage.setItem('localCart', JSON.stringify(cartData))
-      this.cartData.emit(cartData)
+      this.cartData.emit(cartData);
+      
     }
   }
 
