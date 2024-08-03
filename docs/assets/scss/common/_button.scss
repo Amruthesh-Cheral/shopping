@@ -1,0 +1,22 @@
+.same-nav{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    .btn{
+        margin: 0;
+    width: 34px;
+    height: 34px;
+    font-size: 30px;
+    background-color: #363f4d;
+    line-height: 30px;
+    color: #fff;
+    border-radius: 0;
+    font-size: 21px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    &:hover{
+        background-color: #eb3e32;
+    }
+    }
+}
