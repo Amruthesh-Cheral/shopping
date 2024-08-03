@@ -23,7 +23,31 @@
   ],
   "cart": [
     {
-      "id": "f4c4",
+      "id": "c1d5",
+      "productName": "MOtorolla 456",
+      "productPrice": "68978",
+      "productColor": "pitha",
+      "productCategory": "mobile",
+      "productDescription": "slider ",
+      "productURL": "https://i.gadgets360cdn.com/products/large/Realme-12-Pro-Plus-5G-DB-709x800-1706525405.jpg",
+      "quantinty": 1,
+      "userId": "322d",
+      "productId": "e51f"
+    },
+    {
+      "id": "c9ac",
+      "productName": "d2 LINE",
+      "productPrice": "2400",
+      "productColor": "pink",
+      "productCategory": "dress",
+      "productDescription": "premium brand",
+      "productURL": "https://d2line.com/thatlook/wp-content/uploads/sites/4/2023/02/Untitled-design-4-800x600.png",
+      "quantinty": 1,
+      "productId": "273a",
+      "userId": null
+    },
+    {
+      "id": "4e28",
       "productName": "oppo 2024",
       "productPrice": "12000",
       "productColor": "green",
@@ -33,30 +57,6 @@
       "quantinty": 1,
       "userId": "322d",
       "productId": "1da8"
-    },
-    {
-      "id": "bb40",
-      "productName": "motorolla 123",
-      "productPrice": "292929",
-      "productColor": "blue",
-      "productCategory": "mobile",
-      "productDescription": "looking awsome",
-      "productURL": "https://rukminim2.flixcart.com/image/850/1000/xif0q/mobile/e/y/n/pixel-8a-ga04432-in-google-original-imahyn3mqzdbzywg.jpeg?q=90&crop=false",
-      "quantinty": 1,
-      "userId": "322d",
-      "productId": "7cca"
-    },
-    {
-      "id": "f59d",
-      "productName": "MOtorolla 456",
-      "productPrice": "68978",
-      "productColor": "pitha",
-      "productCategory": "mobile",
-      "productDescription": "slider ",
-      "productURL": "https://i.gadgets360cdn.com/products/large/Realme-12-Pro-Plus-5G-DB-709x800-1706525405.jpg",
-      "quantinty": 7,
-      "userId": "322d",
-      "productId": "e51f"
     }
   ],
   "products": [

@@ -90,7 +90,9 @@ export class HomeComponent implements OnInit {
   constructor(private router: Router, private products: ProductsService) {
   }
   ngOnInit(): void {
+  
     this.products.popularProducts().subscribe((data) => {
+      
       this.popular = data
     })
 

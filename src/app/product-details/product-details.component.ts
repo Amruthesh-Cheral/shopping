@@ -15,7 +15,7 @@ export class ProductDetailsComponent implements OnInit {
   addRemoveBtn: boolean = true;
   cartData2!: product | undefined;
   trendy!: product[];
-  constructor(private activateRoute: ActivatedRoute, private product: ProductsService) {}
+  constructor(private activateRoute: ActivatedRoute, private product: ProductsService) { }
   customOptions: OwlOptions = {
     loop: true,
     mouseDrag: false,
@@ -65,7 +65,7 @@ export class ProductDetailsComponent implements OnInit {
         this.product.cartData.subscribe((res) => {
           let item = res.filter((item: product) =>
             productId?.toString() === item.productId?.toString())
-          console.log(item, 'btnItemsbtnItems');
+          // console.log(item, 'btnItemsbtnItems');
           if (item.length) {
             this.cartData2 = item[0]
             this.addRemoveBtn = false;
@@ -99,14 +99,15 @@ export class ProductDetailsComponent implements OnInit {
       } else {
         let user = localStorage.getItem('user');
         let userId = user && JSON.parse(user)[0].id;
-        // console.log(this.productData.id);
 
         let dataUser: cart = {
           ...this.productData,
           userId,
           productId: this.productData.id
         }
+
         delete dataUser.id;
+
         this.product.addtoCart(dataUser).subscribe((data) => {
           if (data) {
             this.product.getAllCartItems(userId);
@@ -115,7 +116,6 @@ export class ProductDetailsComponent implements OnInit {
         })
         // console.warn(dataUser);
       }
-
     }
   }
   // ADD TO CART ITEMS
@@ -125,13 +125,13 @@ export class ProductDetailsComponent implements OnInit {
 
     if (!localStorage.getItem('user')) {
       this.product.removeCart(productId);
+      this.addRemoveBtn = true;
     } else {
       let user = localStorage.getItem('user');
       let userId = user && JSON.parse(user)[0].id;
       this.cartData2 && this.product.removeToCart(this.cartData2?.id).subscribe((res) => {
         if (res) {
           this.product.getAllCartItems(userId);
-          
         }
       })
       this.addRemoveBtn = true;

@@ -24,7 +24,9 @@ export class CartPageComponent implements OnInit {
     this.allItemsload()
   }
   allItemsload() {
-    this.product.currentCart().subscribe((res) => {
+    this.product.cartItems().subscribe((res) => {
+      // console.log(res);
+      
       this.cartData = res;
       let price = 0;
       res.forEach((item) => {
@@ -47,8 +49,8 @@ export class CartPageComponent implements OnInit {
   checkOut() {
     this.router.navigate(['./check-out'])
   }
+  // ORDER REMOVE
   removeItem(cartId: any) {
-
     cartId && this.product.removeToCart(cartId).subscribe((res) => {
       if (res) {
         let user = localStorage.getItem('user');

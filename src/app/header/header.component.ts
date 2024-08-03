@@ -25,9 +25,8 @@ export class HeaderComponent implements OnInit {
           this.menuType = 'user'
           let userStore = localStorage.getItem('user')
           let userJsonVal = userStore && JSON.parse(userStore)
-          this.userName = userJsonVal[0].name;
-          
-          this.product.getAllCartItems(userJsonVal.id);
+          this.userName = userJsonVal[0].name;              
+          this.product.getAllCartItems(userJsonVal[0].id);
         } else {
           this.menuType = 'default';
 
@@ -38,16 +37,13 @@ export class HeaderComponent implements OnInit {
     let localCart = localStorage.getItem(`localCart`);
     if (localCart) {
       this.cartCount = JSON.parse(localCart).length;
-      
     }
 
     this.product.cartData.subscribe((items) => {
       this.cartCount = items.length
-      console.log(items,'this.cartCount');
     })
-    // console.log(this.menuType,'menu typeee');
-  
-    
+
+
   }
   logOut() {
     localStorage.removeItem('seller');

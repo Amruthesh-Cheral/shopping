@@ -15,7 +15,8 @@ export class CheckoutPageComponent {
   constructor(private product: ProductsService, private router: Router) { }
 
   ngOnInit(): void {
-    this.product.currentCart().subscribe((res) => {
+    this.product.cartItems().subscribe((res) => {
+      
       let price = 0;
       this.cartData = res,
        res.forEach((e)=>{

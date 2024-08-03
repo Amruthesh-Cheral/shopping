@@ -90,11 +90,12 @@
                 </div>
                 <div class="col-md-6">
                     <ul class="header_list text-md-right text-center">
-                        <li><a routerLink="./user-auth">User Login</a></li>
-                            <li [ngSwitch]="menuType" *ngIf="menuType !== 'default'">
-                                <a *ngSwitchCase="'user'"  class="text-white" (click)="UserlogOut()">use : Logout</a>
-                                <a *ngSwitchCase="'seller'"  class="text-white" (click)="logOut()">sel : Logout</a>
-                            </li>
+                        <li><a href="#" routerLink="./user-auth">User Login</a></li>
+                        <li [ngSwitch]="menuType" *ngIf="menuType !== 'default'">
+                            <a *ngSwitchCase="'user'" href="#" class="text-white" (click)="UserlogOut()">use :
+                                Logout</a>
+                            <a *ngSwitchCase="'seller'" href="#" class="text-white" (click)="logOut()">sel : Logout</a>
+                        </li>
                         <li><a routerLink="./seller-auth" href="#">Seller Login</a></li>
 
                     </ul>
@@ -118,10 +119,10 @@
                         </form>
                         <div class="header-right">
                             <div class="header-cart">
-                                <a href="#">
+                                <a [routerLink]="cartCount>0?'./cart-page':null">
                                     <div class="cart-icon">
-                                        <img src="assets/images/layout/cart-icon.png" alt="cart-icon">
-                                        <span><a class="nav-link" [routerLink]="cartCount>0?'./cart-page':null">{{cartCount}}</a></span>
+                                        <img class="user-select-none" src="assets/images/layout/cart-icon.png" alt="cart-icon">
+                                        <span><a  class="nav-link">{{cartCount}}</a></span>
                                     </div>
                                     <!-- $237.00<i class="fa fa-angle-down"></i> -->
                                 </a>
@@ -257,10 +258,10 @@
                                     <a class="nav-link active" aria-current="page" routerLink="./home">Home</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" >About</a>
+                                    <a class="nav-link">About</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" >Contact Us</a>
+                                    <a class="nav-link">Contact Us</a>
                                 </li>
                                 <li class="nav-item" *ngSwitchCase="'seller'">
                                     <a class="nav-link" routerLink="./sell-add-products">Add Product</a>
