@@ -28,6 +28,13 @@
     "tslib": "^2.3.0",
     "zone.js": "~0.13.0"
   },
+  "build": {
+  "options": {
+    "outputPath": "dist",
+    "baseHref": "/shopping/"
+  }
+}
+,
   "devDependencies": {
     "@angular-devkit/build-angular": "^16.2.14",
     "@angular/cli": "^16.1.0",
