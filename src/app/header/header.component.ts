@@ -25,24 +25,26 @@ export class HeaderComponent implements OnInit {
           this.menuType = 'user'
           let userStore = localStorage.getItem('user')
           let userJsonVal = userStore && JSON.parse(userStore)
-          console.log(userJsonVal);
+         
           this.userName = userJsonVal[0].name;    
                     
           this.product.getAllCartItems(userJsonVal[0].id);
         } else {
           this.menuType = 'default';
-
         }
       }
     })
 
     let localCart = localStorage.getItem(`localCart`);
+
     if (localCart) {
       this.cartCount = JSON.parse(localCart).length;
+      console.log(this.cartCount);
     }
 
     this.product.cartData.subscribe((items) => {
-      this.cartCount = items.length
+      this.cartCount = items.length;
+      
     })
 
 

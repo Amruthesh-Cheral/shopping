@@ -25,8 +25,6 @@ export class CartPageComponent implements OnInit {
   }
   allItemsload() {
     this.product.cartItems().subscribe((res) => {
-      // console.log(res);
-      
       this.cartData = res;
       let price = 0;
       res.forEach((item) => {
@@ -41,6 +39,7 @@ export class CartPageComponent implements OnInit {
       this.priceSummary.tax = price / 10;
       this.priceSummary.delivery = 100;
       this.priceSummary.total = price + (price / 10) + 100 - (price / 10);
+      console.log(this.cartData.length);
       if (!this.cartData.length) {
         this.router.navigate(['./home'])
       }

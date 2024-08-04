@@ -41,18 +41,6 @@
       "productId": "e51f"
     },
     {
-      "id": "c9ac",
-      "productName": "d2 LINE",
-      "productPrice": "2400",
-      "productColor": "pink",
-      "productCategory": "dress",
-      "productDescription": "premium brand",
-      "productURL": "https://d2line.com/thatlook/wp-content/uploads/sites/4/2023/02/Untitled-design-4-800x600.png",
-      "quantinty": 1,
-      "productId": "273a",
-      "userId": null
-    },
-    {
       "id": "4e28",
       "productName": "oppo 2024",
       "productPrice": "12000",
@@ -63,18 +51,6 @@
       "quantinty": 1,
       "userId": "322d",
       "productId": "1da8"
-    },
-    {
-      "id": "27bd",
-      "productName": "oppo 2024",
-      "productPrice": "12000",
-      "productColor": "green",
-      "productCategory": "mobile",
-      "productDescription": "image quality",
-      "productURL": "https://www.oppo.com/content/dam/oppo-campaign-site/in/events/oppo-product/image-link/march-2023/OPPO_F27_Pro+_5G_Midnight_Navy_frontback_1200x1200.jpg",
-      "quantinty": 1,
-      "productId": "1da8",
-      "userId": null
     }
   ],
   "products": [
