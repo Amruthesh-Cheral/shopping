@@ -14,6 +14,7 @@
     "@angular/common": "^16.2.0",
     "@angular/compiler": "^16.2.0",
     "@angular/core": "^16.2.0",
+    "@angular/fire": "^18.0.1",
     "@angular/forms": "^16.2.0",
     "@angular/platform-browser": "^16.2.0",
     "@angular/platform-browser-dynamic": "^16.2.0",
@@ -21,6 +22,7 @@
     "@fortawesome/angular-fontawesome": "^0.15.0",
     "angular-notifier": "^14.0.0",
     "bootstrap": "^5.3.3",
+    "firebase": "^10.12.5",
     "gitignore": "^0.7.0",
     "json-server": "^1.0.0-beta.1",
     "ngx-owl-carousel-o": "^18.0.0",
@@ -29,12 +31,11 @@
     "zone.js": "~0.13.0"
   },
   "build": {
-  "options": {
-    "outputPath": "dist",
-    "baseHref": "/shopping/"
-  }
-}
-,
+    "options": {
+      "outputPath": "dist",
+      "baseHref": "/shopping/"
+    }
+  },
   "devDependencies": {
     "@angular-devkit/build-angular": "^16.2.14",
     "@angular/cli": "^16.1.0",

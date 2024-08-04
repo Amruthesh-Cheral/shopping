@@ -25,7 +25,9 @@ export class HeaderComponent implements OnInit {
           this.menuType = 'user'
           let userStore = localStorage.getItem('user')
           let userJsonVal = userStore && JSON.parse(userStore)
-          this.userName = userJsonVal[0].name;              
+          console.log(userJsonVal);
+          this.userName = userJsonVal[0].name;    
+                    
           this.product.getAllCartItems(userJsonVal[0].id);
         } else {
           this.menuType = 'default';

@@ -92,8 +92,7 @@
                     <ul class="header_list text-md-right text-center">
                         <li><a href="#" routerLink="./user-auth">User Login</a></li>
                         <li [ngSwitch]="menuType" *ngIf="menuType !== 'default'">
-                            <a *ngSwitchCase="'user'" href="#" class="text-white" (click)="UserlogOut()">use :
-                                Logout</a>
+                            <a *ngSwitchCase="'user'" href="#" class="text-white" (click)="UserlogOut()">use : Logout</a>
                             <a *ngSwitchCase="'seller'" href="#" class="text-white" (click)="logOut()">sel : Logout</a>
                         </li>
                         <li><a routerLink="./seller-auth" href="#">Seller Login</a></li>
@@ -113,8 +112,7 @@
                             <a routerLink="./home"><img src="assets/images/logo-shopping.png" alt="logo"></a>
                         </div>
                         <form class="header-form">
-                            <input class="search-box" placeholder="Search Product..." required="" value=""
-                                type="search">
+                            <input class="search-box" placeholder="Search Product..." required="" value="" type="search">
                             <button type="submit">Search</button>
                         </form>
                         <div class="header-right">
