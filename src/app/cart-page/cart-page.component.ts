@@ -26,6 +26,8 @@ export class CartPageComponent implements OnInit {
   allItemsload() {
     this.product.cartItems().subscribe((res) => {
       this.cartData = res;
+      console.log(res,'cartitems');
+      
       let price = 0;
       res.forEach((item) => {
         if (item?.quantinty) {

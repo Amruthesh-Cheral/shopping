@@ -5,12 +5,6 @@
       "name": "amru",
       "email": "amrutest99@gmail.com",
       "password": "1234"
-    },
-    {
-      "id": "b15b",
-      "name": "amrutest",
-      "email": "amru@gmail.com",
-      "password": "1mru"
     }
   ],
   "user": [
@@ -29,20 +23,8 @@
   ],
   "cart": [
     {
-      "id": "c1d5",
-      "productName": "MOtorolla 456",
-      "productPrice": "68978",
-      "productColor": "pitha",
-      "productCategory": "mobile",
-      "productDescription": "slider ",
-      "productURL": "https://i.gadgets360cdn.com/products/large/Realme-12-Pro-Plus-5G-DB-709x800-1706525405.jpg",
-      "quantinty": 1,
-      "userId": "322d",
-      "productId": "e51f"
-    },
-    {
-      "id": "4e28",
-      "productName": "oppo 2024",
+      "id": "e8d7",
+      "productName": "oppo 2024 new modal",
       "productPrice": "12000",
       "productColor": "green",
       "productCategory": "mobile",
@@ -55,7 +37,7 @@
   ],
   "products": [
     {
-      "productName": "oppo 2024",
+      "productName": "oppo 2024 new modal",
       "productPrice": "12000",
       "productColor": "green",
       "productCategory": "mobile",

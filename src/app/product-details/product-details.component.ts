@@ -16,6 +16,7 @@ export class ProductDetailsComponent implements OnInit {
   cartData2!: product | undefined;
   trendy!: product[];
   constructor(private activateRoute: ActivatedRoute, private product: ProductsService) { }
+
   customOptions: OwlOptions = {
     loop: true,
     mouseDrag: false,
@@ -41,11 +42,14 @@ export class ProductDetailsComponent implements OnInit {
     nav: true
   }
   ngOnInit(): void {
+    
     // GET ROUTE SLUGN NAME
     let productId = this.activateRoute.snapshot.paramMap.get('productId');
     // GET ROUTE SLUGN NAME
     this.product.getProduct(productId).subscribe((product) => {
       this.productData = product;
+    console.log(this.productData);
+
       let cartData = localStorage.getItem('localCart');
       if (productId && cartData) {
         let item = JSON.parse(cartData);
@@ -76,6 +80,9 @@ export class ProductDetailsComponent implements OnInit {
 
 
 
+    })
+    this.product.TrendyProducts().subscribe((data) => {
+      this.trendy = data
     })
   }
 

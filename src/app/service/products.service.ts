@@ -84,17 +84,19 @@ export class ProductsService {
   }
   // REMOVE TO CART
   // ALL CART ITEMS
-  cartItems(){
+  cartItems() {
     let userStore = localStorage.getItem('user');
     let localStore = localStorage.getItem('localCart');
-    let localData = localStore && JSON.parse(localStore)[0];  
-    let userData = userStore && JSON.parse(userStore)[0];  
+    let localData = localStore && JSON.parse(localStore)[0];
+    let userData = userStore && JSON.parse(userStore)[0];
     if (localData) {
-     return this.http.get<cart[]>(`http://localhost:3000/cart?userId=` + localData.id);
-    }else {
-     return this.http.get<cart[]>(`http://localhost:3000/cart?userId=` + userData.id);
+      return this.http.get<cart[]>(`http://localhost:3000/cart?userId=` + localData.id);
+    } else if (userData) {
+      return this.http.get<cart[]>(`http://localhost:3000/cart?userId=` + userData.id);
+    } else {
+      return this.http.get<cart[]>(`http://localhost:3000/cart`);
     }
-    
+
   }
   // ALL CART ITEMS
   // CURRENT CART

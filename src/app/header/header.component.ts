@@ -16,7 +16,8 @@ export class HeaderComponent implements OnInit {
   ngOnInit() {
     this.route.events.subscribe((val: any) => {
       if (val.url) {
-        if (val.url?.includes('seller') && localStorage.getItem('seller')) {
+        // if (val.url?.includes('seller') && localStorage.getItem('seller')) {
+        if (localStorage.getItem('seller')) {
           this.menuType = 'seller'
           let sellStore = localStorage.getItem('seller')
           let selJsonVal = sellStore && JSON.parse(sellStore)
@@ -25,12 +26,12 @@ export class HeaderComponent implements OnInit {
           this.menuType = 'user'
           let userStore = localStorage.getItem('user')
           let userJsonVal = userStore && JSON.parse(userStore)
-         
-          this.userName = userJsonVal[0].name;    
-                    
+          this.userName = userJsonVal[0].name;
           this.product.getAllCartItems(userJsonVal[0].id);
         } else {
           this.menuType = 'default';
+          // console.log(this.cartCount);
+
         }
       }
     })
@@ -39,12 +40,11 @@ export class HeaderComponent implements OnInit {
 
     if (localCart) {
       this.cartCount = JSON.parse(localCart).length;
-      console.log(this.cartCount);
     }
 
     this.product.cartData.subscribe((items) => {
       this.cartCount = items.length;
-      
+
     })
 
 
@@ -52,6 +52,7 @@ export class HeaderComponent implements OnInit {
   logOut() {
     localStorage.removeItem('seller');
     this.route.navigate(['./seller-auth'])
+    this.product.cartData.emit([])
   }
   UserlogOut() {
     localStorage.removeItem('user');

@@ -22,6 +22,7 @@ export class UserAuthComponent {
 
   userSignUp(data: signUp) {
     this.user.signUp(data)
+    localStorage.removeItem('seller');
   }
 
   loginUser(data: login) {
@@ -31,6 +32,7 @@ export class UserAuthComponent {
       if (res) {
         this.authError = " User not found"
       } else {
+        localStorage.removeItem('seller');
         this.localCartRemoteCart()
       }
     })
@@ -42,7 +44,7 @@ export class UserAuthComponent {
     let user = localStorage.getItem('user');
     let userId = user && JSON.parse(user)[0].id;
     if (savedItems) {
-      savedItems.forEach((product: product, index) => {
+      savedItems?.forEach((product: product, index) => {
         let cardData: cart = {
           ...product,
           productId: product.id,

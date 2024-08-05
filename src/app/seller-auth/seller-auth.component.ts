@@ -15,11 +15,13 @@ export class SellerAuthComponent {
     this.seller.reloadSeller()
   }
   signUp(data: signUp): void {
-    this.seller.userSignup(data)
+    localStorage.removeItem('user');
+    this.seller.userSignup(data);
   }
   login(data: login) {
     this.authError = '';
     this.seller.userLogin(data);
+    localStorage.removeItem('user');
     this.seller.isLoginError.subscribe((isError: any) => {
       if (isError) {
         this.authError = " Email password is not correct"
