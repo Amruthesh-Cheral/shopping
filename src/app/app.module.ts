@@ -19,6 +19,9 @@ import { MyOrdersComponent } from './my-orders/my-orders.component';
 import { FooterComponent } from './layout/footer/footer.component';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AngularFireModule} from '@angular/fire/compat'
+import { environment } from 'src/environments/environment.development';
+import { AngularFireAuthModule } from "@angular/fire/compat/auth";
 
 @NgModule({
   declarations: [
@@ -42,7 +45,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     FormsModule,
     HttpClientModule,CarouselModule,
     ReactiveFormsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    AngularFireAuthModule,
+    AngularFireModule.initializeApp(environment.firebase)
   ], providers: [],
   bootstrap: [AppComponent]
 })
