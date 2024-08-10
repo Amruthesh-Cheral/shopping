@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ProductsService } from '../service/products.service';
-import { product } from '../data-types';
-import { NotifierService } from 'angular-notifier';
 
 @Component({
   selector: 'app-seller-add-product',
