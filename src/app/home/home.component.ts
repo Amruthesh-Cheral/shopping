@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ProductsService } from '../service/products.service';
-import { product } from '../data-types';
+import { cart, product } from '../data-types';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 
 @Component({
@@ -10,9 +10,12 @@ import { OwlOptions } from 'ngx-owl-carousel-o';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  popular!: product[];
+  // popular!: product[];
+  trendyData!: product;
   trendy!: product[];
-
+  addRemoveBtn: boolean = true;
+  productData: product | undefined;
+  cartData2!: product | undefined;
   customOptions: OwlOptions = {
     loop: true,
     mouseDrag: false,
@@ -37,7 +40,6 @@ export class HomeComponent implements OnInit {
     },
     nav: true
   }
-
   poster: OwlOptions = {
     loop: true,
     mouseDrag: false,
@@ -87,17 +89,68 @@ export class HomeComponent implements OnInit {
     nav: true
   }
 
-  constructor(private router: Router, private products: ProductsService) {
+  constructor(private products: ProductsService) {
   }
+
   ngOnInit(): void {
-  
-    this.products.popularProducts().subscribe((data) => {
-      
-      this.popular = data
+    this.products.TrendyProducts().subscribe((data) => {
+      // console.log(data);
+
+      this.trendy = data;
     })
 
-    this.products.TrendyProducts().subscribe((data) => {
-      this.trendy = data
-    })
   }
+
+  // ADD TO CART ITEMS
+  addToCart(val: string | undefined) {
+    if (this.trendy) {
+      if (!localStorage.getItem('user')) {
+        
+        this.products.addTocartSer({
+          ...this.trendyData,
+          productId: val
+        })
+        this.addRemoveBtn = false;
+      } else {
+        let user = localStorage.getItem('user');
+        let userId = user && JSON.parse(user)[0].id;
+
+        let dataUser: cart = {
+          ...this.trendyData,
+          userId,
+          productId: this.trendyData.id
+        }
+
+        delete dataUser.id;
+
+        this.products.addtoCart(dataUser).subscribe((data) => {
+          if (data) {
+            this.products.getAllCartItems(userId);
+            this.addRemoveBtn = false;
+          }
+        })
+        // console.warn(dataUser);
+      }
+    }
+  }
+  // ADD TO CART ITEMS
+
+  // REMOVE CART ITEMS
+  removeCart(productId: any) {
+    if (!localStorage.getItem('user')) {
+      this.products.removeCart(productId);
+      this.addRemoveBtn = true;
+    } else {
+      let user = localStorage.getItem('user');
+      let userId = user && JSON.parse(user)[0].id;
+      this.cartData2 && this.products.removeToCart(this.cartData2?.id).subscribe((res) => {
+        if (res) {
+          this.products.getAllCartItems(userId);
+        }
+      })
+      this.addRemoveBtn = true;
+    }
+  }
+  // REMOVE CART ITEMS
+
 }

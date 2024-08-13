@@ -42,24 +42,27 @@ export class ProductDetailsComponent implements OnInit {
     nav: true
   }
   ngOnInit(): void {
-    
+
     // GET ROUTE SLUGN NAME
     let productId = this.activateRoute.snapshot.paramMap.get('productId');
     // GET ROUTE SLUGN NAME
     this.product.getProduct(productId).subscribe((product) => {
       this.productData = product;
-    console.log(this.productData);
-
-      let cartData = localStorage.getItem('localCart');
-      if (productId && cartData) {
-        let item = JSON.parse(cartData);
-        item = item.filter((item: product) => productId == item.id.toString())
-        if (item.length) {
-          this.addRemoveBtn = false;
-        } else {
-          this.addRemoveBtn = true;
-        }
-      }
+     console.log(product);
+     
+      
+      // let cartData = localStorage.getItem('localCart');
+      // if (productId && cartData) {
+      //   let item = JSON.parse(cartData);
+      //   console.log(item);
+        
+      //   item = item.filter((item: product) => productId == item.id.toString())
+      //   if (item.length) {
+      //     this.addRemoveBtn = false;
+      //   } else {
+      //     this.addRemoveBtn = true;
+      //   }
+      // }
 
       let user = localStorage.getItem('user');
       if (user) {
@@ -69,17 +72,12 @@ export class ProductDetailsComponent implements OnInit {
         this.product.cartData.subscribe((res) => {
           let item = res.filter((item: product) =>
             productId?.toString() === item.productId?.toString())
-          // console.log(item, 'btnItemsbtnItems');
           if (item.length) {
             this.cartData2 = item[0]
             this.addRemoveBtn = false;
           }
-
         })
       }
-
-
-
     })
     this.product.TrendyProducts().subscribe((data) => {
       this.trendy = data
@@ -97,52 +95,73 @@ export class ProductDetailsComponent implements OnInit {
   // ADD COUNT
   // ADD TO CART ITEMS
   addToCart() {
+    console.log(this.productData);
     if (this.productData) {
       this.productData.quantinty = this.productQuantity;
-      if (!localStorage.getItem('user')) {
-        this.product.addTocartSer(this.productData)
-        this.addRemoveBtn = false;
-        // console.warn('user is there');
-      } else {
+      if (localStorage.getItem('user')) {
         let user = localStorage.getItem('user');
         let userId = user && JSON.parse(user)[0].id;
-
         let dataUser: cart = {
           ...this.productData,
           userId,
           productId: this.productData.id
         }
-
         delete dataUser.id;
-
         this.product.addtoCart(dataUser).subscribe((data) => {
+          console.log(data);
+          
           if (data) {
             this.product.getAllCartItems(userId);
             this.addRemoveBtn = false;
           }
         })
-        // console.warn(dataUser);
+      }
+      else {
+        let userId = this.productData.id;
+        let dataUser2: cart = {
+          ...this.productData,
+          userId,
+          productId: this.productData.id
+        }
+        delete dataUser2.id;
+        
+        this.product.addtoCart(dataUser2).subscribe((data) => {
+          if (data) {
+            this.product.getAllCartItems(userId);
+            this.addRemoveBtn = false;
+          }
+        })
       }
     }
   }
   // ADD TO CART ITEMS
 
   // REMOVE CART ITEMS
-  removeCart(productId: any) {
+  removeCart(productId: any) {    
+    productId && this.product.removeToCart(this.productData?.id).subscribe((res) => {
+      console.log(res,'remove cart details page');
+      
+      if (res) {
+        this.product.getAllCartItems(productId);
+        this.addRemoveBtn = true;
+      }
+    })
 
-    if (!localStorage.getItem('user')) {
-      this.product.removeCart(productId);
-      this.addRemoveBtn = true;
-    } else {
-      let user = localStorage.getItem('user');
-      let userId = user && JSON.parse(user)[0].id;
-      this.cartData2 && this.product.removeToCart(this.cartData2?.id).subscribe((res) => {
-        if (res) {
-          this.product.getAllCartItems(userId);
-        }
-      })
-      this.addRemoveBtn = true;
-    }
+    // if (!localStorage.getItem('user')) {
+    //   this.product.removeCart(productId);
+    //   this.addRemoveBtn = true;
+    // }
+    // else {
+    //   let user = localStorage.getItem('user');
+    //   let userId = user && JSON.parse(user)[0].id;
+    //   this.cartData2 && this.product.removeToCart(this.cartData2?.id).subscribe((res) => {
+    //     if (res) {
+    //       this.product.getAllCartItems(userId);
+    //     }
+    //   })
+    //   this.addRemoveBtn = true;
+    // }
+
   }
   // REMOVE CART ITEMS
 }

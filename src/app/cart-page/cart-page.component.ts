@@ -18,16 +18,17 @@ export class CartPageComponent implements OnInit {
     delivery: 0,
     total: 0
   };
-  constructor(private product: ProductsService, private router: Router) { }
 
+  constructor(private product: ProductsService, private router: Router) { }
+  
   ngOnInit(): void {
     this.allItemsload()
   }
+
   allItemsload() {
     this.product.cartItems().subscribe((res) => {
+      console.log(res, 'all items');
       this.cartData = res;
-      console.log(res,'cartitems');
-      
       let price = 0;
       res.forEach((item) => {
         if (item?.quantinty) {
@@ -41,9 +42,8 @@ export class CartPageComponent implements OnInit {
       this.priceSummary.tax = price / 10;
       this.priceSummary.delivery = 100;
       this.priceSummary.total = price + (price / 10) + 100 - (price / 10);
-      console.log(this.cartData.length);
       if (!this.cartData.length) {
-        this.router.navigate(['./home'])
+        // this.router.navigate(['./home'])
       }
     })
   }
@@ -54,6 +54,7 @@ export class CartPageComponent implements OnInit {
   removeItem(cartId: any) {
     cartId && this.product.removeToCart(cartId).subscribe((res) => {
       if (res) {
+        console.log(res, 'deleted');
         let user = localStorage.getItem('user');
         let userId = user && JSON.parse(user)[0].id;
         this.product.getAllCartItems(userId);

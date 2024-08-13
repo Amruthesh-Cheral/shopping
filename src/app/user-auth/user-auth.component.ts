@@ -40,10 +40,15 @@ export class UserAuthComponent {
   }
 
   localCartRemoteCart() {
-    let savedItems: product[] = JSON.parse(localStorage.getItem('localCart') || '{}');
+    let savedItems: product[] = JSON.parse(localStorage.getItem('localCart') || '[]');
+
+    if (!Array.isArray(savedItems)) {
+      savedItems = []; // Initialize as an empty array if not
+    }
+
     let user = localStorage.getItem('user');
     let userId = user && JSON.parse(user)[0].id;
-    if (savedItems) {
+    if (savedItems.length > 0) {
       savedItems?.forEach((product: product, index) => {
         let cardData: cart = {
           ...product,
@@ -57,7 +62,7 @@ export class UserAuthComponent {
             if (res) {
               console.log("items stored in dB");
             }
-          })
+          });
           if (savedItems.length === index + 1) {
             localStorage.removeItem('localCart');
             console.log("removed alllll ");

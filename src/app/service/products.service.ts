@@ -39,10 +39,8 @@ export class ProductsService {
   }
   getAllCartItems(userId: any) {
     return this.http.get<product[]>(`http://localhost:3000/cart?userId=` + userId, { observe: 'response' }).subscribe((res) => {
-      // console.log(userId, "uuuuuuuuu");
       if (res && res.body) {
         this.cartData.emit(res.body)
-        // console.log(this.cartData.emit(res.body));
       }
     })
   }
@@ -53,8 +51,8 @@ export class ProductsService {
     if (!localData) {
       localStorage.setItem('localCart', JSON.stringify([data]))
       this.cartData.emit([data])
-      console.log(this.cartData.emit([data]));
-    } else {
+    }
+    else {
       cartData = JSON.parse(localData)
       cartData.push(data);
       localStorage.setItem('localCart', JSON.stringify(cartData))
@@ -64,6 +62,8 @@ export class ProductsService {
 
   // REMOVE CART SERVICE
   removeCart(productId: any) {
+    console.log(productId);
+
     let cartData = localStorage.getItem('localCart');
     if (cartData) {
       let items: product[] = JSON.parse(cartData);
@@ -71,32 +71,35 @@ export class ProductsService {
       localStorage.setItem('localCart', JSON.stringify(items))
       this.cartData.emit(items)
     }
+
   }
   // REMOVE CART SERVICE
   // ADD CART ALERT
   addtoCart(cartData: cart) {
+    if (!localStorage.getItem('user')) {
+      return this.http.post('http://localhost:3000/wCart', cartData);
+    }
     return this.http.post('http://localhost:3000/cart', cartData);
   }
   // ADD CART ALERT
   // REMOVE TO CART
   removeToCart(productId: any) {
+    console.log(productId,'service remove product id');
     return this.http.delete(`http://localhost:3000/cart/` + productId);
   }
   // REMOVE TO CART
   // ALL CART ITEMS
   cartItems() {
     let userStore = localStorage.getItem('user');
-    let localStore = localStorage.getItem('localCart');
-    let localData = localStore && JSON.parse(localStore)[0];
     let userData = userStore && JSON.parse(userStore)[0];
-    if (localData) {
-      return this.http.get<cart[]>(`http://localhost:3000/cart?userId=` + localData.id);
-    } else if (userData) {
+    
+    if (userData) {
+      this.cartData.emit(userData);
       return this.http.get<cart[]>(`http://localhost:3000/cart?userId=` + userData.id);
     } else {
-      return this.http.get<cart[]>(`http://localhost:3000/cart`);
+      this.cartData.emit(userData);
+      return this.http.get<cart[]>(`http://localhost:3000/wCart`);
     }
-
   }
   // ALL CART ITEMS
   // CURRENT CART

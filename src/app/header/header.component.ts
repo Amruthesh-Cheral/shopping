@@ -36,18 +36,22 @@ export class HeaderComponent implements OnInit {
       }
     })
 
-    let localCart = localStorage.getItem(`localCart`);
+    // let localCart = localStorage.getItem(`localCart`);
+    // if (localCart) {
+    //   this.cartCount = JSON.parse(localCart).length;
+    //   console.log(this.cartCount, 'cartCountcartCount');
+    // }
 
-    if (localCart) {
-      this.cartCount = JSON.parse(localCart).length;
-    }
-
-    this.product.cartData.subscribe((items) => {
-      this.cartCount = items.length;
-
+    this.product.cartItems().subscribe((items) => {
+      this.cartCount = items.length
+     
     })
 
-
+    // this.product.cartData.subscribe((items) => {
+    //   console.log(items,'itemsitemsitemsitemsitems');
+    //   this.cartCount = items.length;
+    // })
+    
   }
   logOut() {
     localStorage.removeItem('seller');
