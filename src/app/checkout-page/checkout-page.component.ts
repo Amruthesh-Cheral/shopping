@@ -16,13 +16,13 @@ export class CheckoutPageComponent {
 
   ngOnInit(): void {
     this.product.cartItems().subscribe((res) => {
-      
       let price = 0;
       this.cartData = res,
        res.forEach((e)=>{
+        console.log(e);
+        
         this.productURL = e.productURL 
        })
-
         res.forEach((item) => {
           if (item?.quantinty) {
             price += (++item.productPrice * item?.quantinty);
@@ -36,8 +36,6 @@ export class CheckoutPageComponent {
 
   orderNow(data: order) {
     let user = localStorage.getItem('user');
-   
-    
     let userId = user && JSON.parse(user).id;
     if (this.totalPrice) {
       let orderData = {

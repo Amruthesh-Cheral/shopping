@@ -148,8 +148,8 @@
                                     <div class="add-cart-btn">
 
                                       <div >
-                                        <a class="btn btn-primary" *ngIf="addRemoveBtn" (click)="addToCart(item?.id)"><i class="fa-solid fa-cart-shopping"></i> Add To Cart</a>
-                                        <a class="btn btn-primary" *ngIf="!addRemoveBtn" (click)="removeCart(item?.id)"><i class="fa-solid fa-cart-shopping"></i> Remove To Cart</a>
+                                        <a class="btn btn-primary" *ngIf="addRemoveBtn" (click)="addToCart(item?.id)"><i class="fa-solid fa-cart-shopping"></i></a>
+                                        <a class="btn btn-primary" *ngIf="!addRemoveBtn" (click)="removeCart(item?.id)"><i class="fa-solid fa-trash-can-arrow-up"></i></a>
                                     </div>
 
                                         <!-- <a routerLink="/details/{{item.id}}" class="btn btn-primary">Add To Cart</a> -->

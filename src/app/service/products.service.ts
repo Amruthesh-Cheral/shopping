@@ -40,7 +40,8 @@ export class ProductsService {
   getAllCartItems(userId: any) {
     return this.http.get<product[]>(`http://localhost:3000/cart?userId=` + userId, { observe: 'response' }).subscribe((res) => {
       if (res && res.body) {
-        this.cartData.emit(res.body)
+        this.cartData.emit(res.body);
+        console.log(res, 'all items');
       }
     })
   }
@@ -62,8 +63,7 @@ export class ProductsService {
 
   // REMOVE CART SERVICE
   removeCart(productId: any) {
-    console.log(productId);
-
+    // console.log(productId);
     let cartData = localStorage.getItem('localCart');
     if (cartData) {
       let items: product[] = JSON.parse(cartData);
@@ -71,7 +71,6 @@ export class ProductsService {
       localStorage.setItem('localCart', JSON.stringify(items))
       this.cartData.emit(items)
     }
-
   }
   // REMOVE CART SERVICE
   // ADD CART ALERT
@@ -84,15 +83,22 @@ export class ProductsService {
   // ADD CART ALERT
   // REMOVE TO CART
   removeToCart(productId: any) {
-    console.log(productId,'service remove product id');
     return this.http.delete(`http://localhost:3000/cart/` + productId);
   }
+  // REMOVE TO CART
+  // REMOVE TO CART
+  // removeDetailsId(productId: product) {
+  //   let testurl = 'http://localhost:3000/cart?productId=7cca'
+  //   let baseurl = `http://localhost:3000/cart?productId=` + productId
+  //   return this.http.delete(testurl);
+  // }
   // REMOVE TO CART
   // ALL CART ITEMS
   cartItems() {
     let userStore = localStorage.getItem('user');
     let userData = userStore && JSON.parse(userStore)[0];
-    
+    console.log(userData);
+
     if (userData) {
       this.cartData.emit(userData);
       return this.http.get<cart[]>(`http://localhost:3000/cart?userId=` + userData.id);

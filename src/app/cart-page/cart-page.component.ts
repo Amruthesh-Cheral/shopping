@@ -27,7 +27,7 @@ export class CartPageComponent implements OnInit {
 
   allItemsload() {
     this.product.cartItems().subscribe((res) => {
-      console.log(res, 'all items');
+      // console.log(res, 'all items');
       this.cartData = res;
       let price = 0;
       res.forEach((item) => {
@@ -42,9 +42,9 @@ export class CartPageComponent implements OnInit {
       this.priceSummary.tax = price / 10;
       this.priceSummary.delivery = 100;
       this.priceSummary.total = price + (price / 10) + 100 - (price / 10);
-      if (!this.cartData.length) {
-        // this.router.navigate(['./home'])
-      }
+      // if (!this.cartData.length) {
+      //   // this.router.navigate(['./home'])
+      // }
     })
   }
   checkOut() {
@@ -57,6 +57,8 @@ export class CartPageComponent implements OnInit {
         console.log(res, 'deleted');
         let user = localStorage.getItem('user');
         let userId = user && JSON.parse(user)[0].id;
+        console.log(res);
+        
         this.product.getAllCartItems(userId);
         this.allItemsload()
       }

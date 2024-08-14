@@ -23,7 +23,19 @@
   ],
   "cart": [
     {
-      "id": "f409",
+      "id": "9084",
+      "productName": "motorolla 123",
+      "productPrice": "292929",
+      "productColor": "blue",
+      "productCategory": "mobile",
+      "productDescription": "looking awsome",
+      "productURL": "https://rukminim2.flixcart.com/image/850/1000/xif0q/mobile/e/y/n/pixel-8a-ga04432-in-google-original-imahyn3mqzdbzywg.jpeg?q=90&crop=false",
+      "quantinty": 1,
+      "userId": "322d",
+      "productId": "7cca"
+    },
+    {
+      "id": "fc00",
       "productName": "d2 LINE",
       "productPrice": "2400",
       "productColor": "pink",
@@ -35,16 +47,40 @@
       "productId": "273a"
     },
     {
-      "id": "4cab",
-      "productName": "motorolla 123",
-      "productPrice": "292929",
-      "productColor": "blue",
-      "productCategory": "mobile",
-      "productDescription": "looking awsome",
-      "productURL": "https://rukminim2.flixcart.com/image/850/1000/xif0q/mobile/e/y/n/pixel-8a-ga04432-in-google-original-imahyn3mqzdbzywg.jpeg?q=90&crop=false",
+      "id": "29c2",
+      "productName": "Gucci",
+      "productPrice": "4300",
+      "productColor": "black",
+      "productCategory": "dress",
+      "productDescription": "premium brand",
+      "productURL": "https://www.worldfashionexchange.com/blog/wp-content/uploads/2024/01/GUCCI.webp",
       "quantinty": 1,
       "userId": "322d",
-      "productId": "7cca"
+      "productId": "726c"
+    },
+    {
+      "id": "bcab",
+      "productName": "Herbal Oil 2",
+      "productPrice": 19.99,
+      "productColor": "white",
+      "productCategory": "Shambu 2",
+      "productDescription": "Hellow Users 2",
+      "productURL": "https://cdn.dummyjson.com/products/images/beauty/Eyeshadow%20Palette%20with%20Mirror/1.png",
+      "quantinty": 1,
+      "userId": "322d",
+      "productId": "9cec"
+    },
+    {
+      "id": "8857",
+      "productName": "oppo 2024 new modal",
+      "productPrice": "12000",
+      "productColor": "green",
+      "productCategory": "mobile",
+      "productDescription": "image quality",
+      "productURL": "https://www.oppo.com/content/dam/oppo-campaign-site/in/events/oppo-product/image-link/march-2023/OPPO_F27_Pro+_5G_Midnight_Navy_frontback_1200x1200.jpg",
+      "quantinty": 1,
+      "userId": "322d",
+      "productId": "1da8"
     }
   ],
   "wCart": [
@@ -191,6 +227,54 @@
       "quantinty": 1,
       "userId": "1da8",
       "productId": "1da8"
+    },
+    {
+      "id": "919a",
+      "productName": "oppo 2024 new modal",
+      "productPrice": "12000",
+      "productColor": "green",
+      "productCategory": "mobile",
+      "productDescription": "image quality",
+      "productURL": "https://www.oppo.com/content/dam/oppo-campaign-site/in/events/oppo-product/image-link/march-2023/OPPO_F27_Pro+_5G_Midnight_Navy_frontback_1200x1200.jpg",
+      "quantinty": 1,
+      "userId": "1da8",
+      "productId": "1da8"
+    },
+    {
+      "id": "2941",
+      "productName": "motorolla 123",
+      "productPrice": "292929",
+      "productColor": "blue",
+      "productCategory": "mobile",
+      "productDescription": "looking awsome",
+      "productURL": "https://rukminim2.flixcart.com/image/850/1000/xif0q/mobile/e/y/n/pixel-8a-ga04432-in-google-original-imahyn3mqzdbzywg.jpeg?q=90&crop=false",
+      "quantinty": 1,
+      "userId": "7cca",
+      "productId": "7cca"
+    },
+    {
+      "id": "ebda",
+      "productName": "motorolla 123",
+      "productPrice": "292929",
+      "productColor": "blue",
+      "productCategory": "mobile",
+      "productDescription": "looking awsome",
+      "productURL": "https://rukminim2.flixcart.com/image/850/1000/xif0q/mobile/e/y/n/pixel-8a-ga04432-in-google-original-imahyn3mqzdbzywg.jpeg?q=90&crop=false",
+      "quantinty": 1,
+      "userId": "7cca",
+      "productId": "7cca"
+    },
+    {
+      "id": "1548",
+      "productName": "motorolla 123",
+      "productPrice": "292929",
+      "productColor": "blue",
+      "productCategory": "mobile",
+      "productDescription": "looking awsome",
+      "productURL": "https://rukminim2.flixcart.com/image/850/1000/xif0q/mobile/e/y/n/pixel-8a-ga04432-in-google-original-imahyn3mqzdbzywg.jpeg?q=90&crop=false",
+      "quantinty": 1,
+      "userId": "7cca",
+      "productId": "7cca"
     }
   ],
   "products": [
@@ -238,7 +322,47 @@
       "productCategory": "dress",
       "productDescription": "premium brand",
       "productURL": "https://www.worldfashionexchange.com/blog/wp-content/uploads/2024/01/GUCCI.webp"
+    },
+    {
+      "id": "9cec",
+      "productName": "Herbal Oil 2",
+      "productPrice": 19.99,
+      "productColor": "white",
+      "productCategory": "Shambu 2",
+      "productDescription": "Hellow Users 2",
+      "productURL": "https://cdn.dummyjson.com/products/images/beauty/Eyeshadow%20Palette%20with%20Mirror/1.png"
     }
   ],
-  "orders": []
+  "orders": [
+    {
+      "id": "8075",
+      "Fname": "",
+      "Lname": "",
+      "email": "",
+      "number": "",
+      "companyName": "",
+      "address": "",
+      "city": "",
+      "state": "",
+      "zip": "",
+      "totalPrice": 990202,
+      "userId": null,
+      "productURL": "https://www.oppo.com/content/dam/oppo-campaign-site/in/events/oppo-product/image-link/march-2023/OPPO_F27_Pro+_5G_Midnight_Navy_frontback_1200x1200.jpg"
+    },
+    {
+      "id": "ba81",
+      "Fname": "amruthesh",
+      "Lname": "c",
+      "email": "amrutheshamru@gmail.com",
+      "number": "09746456992",
+      "companyName": "Beinex Consulting",
+      "address": "Paravil house",
+      "city": "calicut",
+      "state": "Kerala",
+      "zip": "673631",
+      "totalPrice": 990202,
+      "userId": null,
+      "productURL": "https://www.oppo.com/content/dam/oppo-campaign-site/in/events/oppo-product/image-link/march-2023/OPPO_F27_Pro+_5G_Midnight_Navy_frontback_1200x1200.jpg"
+    }
+  ]
 }

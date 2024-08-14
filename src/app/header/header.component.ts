@@ -13,6 +13,7 @@ export class HeaderComponent implements OnInit {
   userName: string = '';
   cartCount: number = 0;
   constructor(private route: Router, private product: ProductsService) { }
+  
   ngOnInit() {
     this.route.events.subscribe((val: any) => {
       if (val.url) {
@@ -47,10 +48,10 @@ export class HeaderComponent implements OnInit {
      
     })
 
-    // this.product.cartData.subscribe((items) => {
-    //   console.log(items,'itemsitemsitemsitemsitems');
-    //   this.cartCount = items.length;
-    // })
+    this.product.cartData.subscribe((items) => {
+      console.log(items,'itemsitemsitemsitemsitems');
+      this.cartCount = items.length;
+    })
     
   }
   logOut() {
