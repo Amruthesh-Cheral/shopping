@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 export class ProductsService {
   cartData = new EventEmitter<product[]>;
   constructor(private http: HttpClient) { }
-
+  
   addProduct(data: any) {
     return this.http.post('http://localhost:3000/products', data)
   }
@@ -37,8 +37,19 @@ export class ProductsService {
   searchProducts(query: string) {
     return this.http.get<product[]>(`http://localhost:3000/products?q=${{ query }}`)
   }
+
   getAllCartItems(userId: any) {
     return this.http.get<product[]>(`http://localhost:3000/cart?userId=` + userId, { observe: 'response' }).subscribe((res) => {
+      if (res && res.body) {
+        this.cartData?.emit(res.body);
+        console.log(res, 'all items');
+      }
+    })
+  }
+
+  getAllWCartItems(id: any) {
+    return this.http.get<product[]>(`http://localhost:3000/wCart?userId=` + id, { observe: 'response' }).subscribe((res) => {
+      console.log(res);
       if (res && res.body) {
         this.cartData.emit(res.body);
         console.log(res, 'all items');
@@ -76,6 +87,7 @@ export class ProductsService {
   // ADD CART ALERT
   addtoCart(cartData: cart) {
     if (!localStorage.getItem('user')) {
+      console.log(cartData, 'service w cart data');
       return this.http.post('http://localhost:3000/wCart', cartData);
     }
     return this.http.post('http://localhost:3000/cart', cartData);
@@ -83,38 +95,29 @@ export class ProductsService {
   // ADD CART ALERT
   // REMOVE TO CART
   removeToCart(productId: any) {
+    if (!localStorage.getItem('user')) {
+      console.log("not user" , productId);
+      
+      return this.http.delete(`http://localhost:3000/wCart/` + productId);
+    }
     return this.http.delete(`http://localhost:3000/cart/` + productId);
   }
-  // REMOVE TO CART
-  // REMOVE TO CART
-  // removeDetailsId(productId: product) {
-  //   let testurl = 'http://localhost:3000/cart?productId=7cca'
-  //   let baseurl = `http://localhost:3000/cart?productId=` + productId
-  //   return this.http.delete(testurl);
-  // }
+
   // REMOVE TO CART
   // ALL CART ITEMS
   cartItems() {
     let userStore = localStorage.getItem('user');
     let userData = userStore && JSON.parse(userStore)[0];
-    console.log(userData);
-
-    if (userData) {
+    if (userStore) {
       this.cartData.emit(userData);
       return this.http.get<cart[]>(`http://localhost:3000/cart?userId=` + userData.id);
     } else {
-      this.cartData.emit(userData);
+      this.cartData?.emit(userData);
       return this.http.get<cart[]>(`http://localhost:3000/wCart`);
     }
   }
   // ALL CART ITEMS
-  // CURRENT CART
-  // currentCart() {
-  //   let userStore = localStorage.getItem('user');
-  //   let userData = userStore && JSON.parse(userStore)[0];  
-  //   return this.http.get<cart[]>(`http://localhost:3000/cart?userId=` + userData.id);
-  // }
-  // CURRENT CART 
+
   // ORDER NOW
   orderNow(data: order) {
     return this.http.post('http://localhost:3000/orders', data);

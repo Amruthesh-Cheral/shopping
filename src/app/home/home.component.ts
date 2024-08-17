@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { ProductsService } from '../service/products.service';
 import { cart, product } from '../data-types';
 import { OwlOptions } from 'ngx-owl-carousel-o';
+import { FormsModule, NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-home',
@@ -16,6 +17,9 @@ export class HomeComponent implements OnInit {
   addRemoveBtn: boolean = true;
   productData: product | undefined;
   cartData2!: product | undefined;
+
+  // formdata!: [];
+
   customOptions: OwlOptions = {
     loop: true,
     mouseDrag: false,
@@ -89,23 +93,19 @@ export class HomeComponent implements OnInit {
     nav: true
   }
 
-  constructor(private products: ProductsService) {
+  constructor(public router : Router, private products: ProductsService, public formMo: FormsModule) {
   }
-
   ngOnInit(): void {
     this.products.TrendyProducts().subscribe((data) => {
-      // console.log(data);
-
       this.trendy = data;
     })
-
   }
 
   // ADD TO CART ITEMS
   addToCart(val: string | undefined) {
     if (this.trendy) {
       if (!localStorage.getItem('user')) {
-        
+
         this.products.addTocartSer({
           ...this.trendyData,
           productId: val

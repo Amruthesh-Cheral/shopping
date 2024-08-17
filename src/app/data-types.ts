@@ -27,8 +27,8 @@ export interface cart {
     productDescription: string;
     id: string | undefined;
     quantinty: undefined | number;
-    userId: string | undefined;
-    productId: string | undefined
+    userId: string |number | undefined;
+    productId: string | undefined;
 }
 export interface priceSummary {
     price: number,

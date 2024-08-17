@@ -20,14 +20,13 @@ export class CartPageComponent implements OnInit {
   };
 
   constructor(private product: ProductsService, private router: Router) { }
-  
+
   ngOnInit(): void {
     this.allItemsload()
   }
 
   allItemsload() {
-    this.product.cartItems().subscribe((res) => {
-      // console.log(res, 'all items');
+    this.product?.cartItems().subscribe((res) => {
       this.cartData = res;
       let price = 0;
       res.forEach((item) => {
@@ -42,9 +41,9 @@ export class CartPageComponent implements OnInit {
       this.priceSummary.tax = price / 10;
       this.priceSummary.delivery = 100;
       this.priceSummary.total = price + (price / 10) + 100 - (price / 10);
-      // if (!this.cartData.length) {
-      //   // this.router.navigate(['./home'])
-      // }
+      if (!this.cartData.length) {
+        this.router.navigate(['./home'])
+      }
     })
   }
   checkOut() {
@@ -52,16 +51,27 @@ export class CartPageComponent implements OnInit {
   }
   // ORDER REMOVE
   removeItem(cartId: any) {
-    cartId && this.product.removeToCart(cartId).subscribe((res) => {
-      if (res) {
-        console.log(res, 'deleted');
-        let user = localStorage.getItem('user');
-        let userId = user && JSON.parse(user)[0].id;
+    let user = localStorage.getItem('user');
+    if (user) {
+      cartId && this.product.removeToCart(cartId).subscribe((res) => {
+        if (res) {
+          let userId = user && JSON.parse(user)[0].id;
+          this.product.getAllCartItems(userId);
+          this.allItemsload()
+        }
+      })
+    } else {
+      this.product.removeToCart(cartId).subscribe((res:any) => {
         console.log(res);
-        
-        this.product.getAllCartItems(userId);
-        this.allItemsload()
-      }
-    })
+        if (res) {  
+          this.product.getAllWCartItems(res?.userId);
+          console.log(res?.productId,'product id');
+          console.log(res?.id,'userId');
+          console.log(cartId,'cartId');
+          this.allItemsload()
+        }
+      })
+    }
+
   }
 }

@@ -49,28 +49,15 @@ export class ProductDetailsComponent implements OnInit {
 
     // GET ROUTE SLUGN NAME
     let productId = this.activateRoute.snapshot.paramMap.get('productId');
+    console.log(productId);
+
     // GET ROUTE SLUGN NAME
     this.product.getProduct(productId).subscribe((product) => {
       this.productData = product;
-      // console.log(product);
-      // let cartData = localStorage.getItem('localCart');
-      // if (productId && cartData) {
-      //   let item = JSON.parse(cartData);
-      //   console.log(item);
-
-      //   item = item.filter((item: product) => productId == item.id.toString())
-      //   if (item.length) {
-      //     this.addRemoveBtn = false;
-      //   } else {
-      //     this.addRemoveBtn = true;
-      //   }
-      // }
-
       let user = localStorage.getItem('user');
       if (user) {
         let userId = user && JSON.parse(user)[0].id;
         this.product.getAllCartItems(userId);
-
         this.product.cartData.subscribe((res) => {
           let item = res.filter((item: any) =>
             productId?.toString() === item.productId?.toString())
@@ -79,7 +66,18 @@ export class ProductDetailsComponent implements OnInit {
             this.addRemoveBtn = false;
           }
         })
+      } else {
+        this.product?.cartItems().subscribe((res) => {
+          res.forEach((item) => {
+            if (item.productId === productId) {
+              this.addRemoveBtn = false;
+            }
+
+          })
+        })
+
       }
+
     })
     this.product.TrendyProducts().subscribe((data) => {
       this.trendy = data
@@ -107,11 +105,8 @@ export class ProductDetailsComponent implements OnInit {
           userId,
           productId: this.productData.id
         }
-
         delete dataUser.id;
         this.product.addtoCart(dataUser).subscribe((data) => {
-          // console.log(data);
-
           if (data) {
             this.product.getAllCartItems(userId);
             this.addRemoveBtn = false;
@@ -119,17 +114,16 @@ export class ProductDetailsComponent implements OnInit {
         })
       }
       else {
-        let userId = this.productData.id;
         let dataUser2: cart = {
           ...this.productData,
-          userId,
+          userId: 111,
           productId: this.productData.id
         }
         delete dataUser2.id;
-
-        this.product.addtoCart(dataUser2).subscribe((data) => {
+        this.product.addtoCart(dataUser2).subscribe((data: any) => {
           if (data) {
-            this.product.getAllCartItems(userId);
+            let userId = data.userId
+            this.product.getAllWCartItems(userId);
             this.addRemoveBtn = false;
           }
         })
@@ -137,20 +131,33 @@ export class ProductDetailsComponent implements OnInit {
     }
   }
   // ADD TO CART ITEMS
-
   // REMOVE CART ITEMS
 
   removeCart() {
-    this.product.removeToCart(this.cartData2?.id).subscribe((res) => {
-
-      if (res) {
-        let user = localStorage.getItem('user');
-        let userId = user && JSON.parse(user)[0].id;
-        this.product.getAllCartItems(userId);
-        this.addRemoveBtn = true;
-      }
-    })
+    if (localStorage.getItem('user')) {
+      this.product.removeToCart(this.cartData2?.id).subscribe((res) => {
+        if (res) {
+          let user = localStorage.getItem('user');
+          let userId = user && JSON.parse(user)[0].id;
+          this.product.getAllCartItems(userId);
+          this.addRemoveBtn = true;
+        }
+      })
+    } else {
+      let productId = this.activateRoute.snapshot.paramMap.get('productId');
+      this.product?.cartItems().subscribe((res) => {
+        res.forEach((item) => {
+          if (item.productId === productId) {
+            this.product.removeToCart(item.id).subscribe((res) => {
+              this.product.getAllWCartItems(item.userId);
+              this.addRemoveBtn = true;
+            })
+          }
+        })
+      })
+    }
   }
+
   // removeCartV2(cartId: any) {
   //   cartId && this.product.removeToCart(cartId).subscribe((res) => {
   //     if (res) {
