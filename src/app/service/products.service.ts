@@ -1,7 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { EventEmitter, Injectable } from '@angular/core';
 import { cart, order, product } from '../data-types';
-import { Observable } from 'rxjs';
 import { ApiEndPoints } from '../core/constants';
 
 @Injectable({
@@ -10,39 +9,40 @@ import { ApiEndPoints } from '../core/constants';
 export class ProductsService {
   cartData = new EventEmitter<product[]>;
   constructor(private http: HttpClient) { }
-  
+
   baseUrl = `http://localhost:3000/`;
 
   addProduct(data: any) {
-    return this.http.post(this.baseUrl+'products', data)
+    return this.http.post(this.baseUrl + ApiEndPoints.products, data)
   }
   getProductList() {
-    return this.http.get<product[]>(this.baseUrl+'products')
+    return this.http.get<product[]>(this.baseUrl + ApiEndPoints.products)
   }
   deleteProduct(id: any) {
-    return this.http.delete(this.baseUrl+`products/${id}`)
+    return this.http.delete(this.baseUrl + ApiEndPoints.productsiD + id)
   }
   getProduct(id: any) {
-    return this.http.get<product>(this.baseUrl+`products/${id}`)
+    return this.http.get<product>(this.baseUrl + ApiEndPoints.productsiD + id)
   }
   getProductsUpdate(id: any) {
-    return this.http.get<product[]>(this.baseUrl+`products/${id}`)
+    return this.http.get<product[]>(this.baseUrl + ApiEndPoints.productsiD + id)
   }
   updateProducts(product: product) {
-    return this.http.put<product[]>(this.baseUrl+`products/${product?.id}`, product)
+    return this.http.put<product[]>(this.baseUrl + ApiEndPoints.productsiD + `${product?.id}`, product)
   }
   popularProducts() {
-    return this.http.get<product[]>(this.baseUrl+'products?_limit=3')
+    return this.http.get<product[]>(this.baseUrl + ApiEndPoints.productLimit3)
   }
   TrendyProducts() {
-    return this.http.get<product[]>(this.baseUrl+'products?_limit=7')
-  }
-  searchProducts(query: string) {
-    return this.http.get<product[]>(this.baseUrl+`products?q=${{ query }}`)
+    return this.http.get<product[]>(this.baseUrl + ApiEndPoints.productLimit7)
   }
 
+  // searchProducts(query: string) {
+  //   return this.http.get<product[]>(this.baseUrl+`products?q=${{ query }}`)
+  // }
+
   getAllCartItems(userId: any) {
-    return this.http.get<product[]>(this.baseUrl+`cart?userId=` + userId, { observe: 'response' }).subscribe((res) => {
+    return this.http.get<product[]>(this.baseUrl + ApiEndPoints.cartUserid + userId, { observe: 'response' }).subscribe((res) => {
       if (res && res.body) {
         this.cartData?.emit(res.body);
         console.log(res, 'all items');
@@ -50,12 +50,10 @@ export class ProductsService {
     })
   }
 
-  getAllWCartItems(id: any) {    
-    return this.http.get<product[]>(this.baseUrl+ApiEndPoints.wCartUserid+ id, { observe: 'response' }).subscribe((res) => {
-      console.log(res);
+  getAllWCartItems(id: any) {
+    return this.http.get<product[]>(this.baseUrl + ApiEndPoints.wCartUserid + id, { observe: 'response' }).subscribe((res) => {
       if (res && res.body) {
         this.cartData.emit(res.body);
-        console.log(res, 'all items');
       }
     })
   }
@@ -77,7 +75,6 @@ export class ProductsService {
 
   // REMOVE CART SERVICE
   removeCart(productId: any) {
-    // console.log(productId);
     let cartData = localStorage.getItem('localCart');
     if (cartData) {
       let items: product[] = JSON.parse(cartData);
@@ -90,20 +87,18 @@ export class ProductsService {
   // ADD CART ALERT
   addtoCart(cartData: cart) {
     if (!localStorage.getItem('user')) {
-      console.log(cartData, 'service w cart data');
-      return this.http.post(this.baseUrl+'wCart', cartData);
+      return this.http.post(this.baseUrl + ApiEndPoints.wCart, cartData);
     }
-    return this.http.post(this.baseUrl+'cart', cartData);
+    return this.http.post(this.baseUrl + ApiEndPoints.cart, cartData);
   }
   // ADD CART ALERT
   // REMOVE TO CART
   removeToCart(productId: any) {
     if (!localStorage.getItem('user')) {
-      console.log("not user" , productId);
-      
-      return this.http.delete(this.baseUrl+`wCart/` + productId);
+
+      return this.http.delete(this.baseUrl + ApiEndPoints.wCartId + productId);
     }
-    return this.http.delete(this.baseUrl+`cart/` + productId);
+    return this.http.delete(this.baseUrl + ApiEndPoints.cartId + productId);
   }
 
   // REMOVE TO CART
@@ -113,29 +108,29 @@ export class ProductsService {
     let userData = userStore && JSON.parse(userStore)[0];
     if (userStore) {
       this.cartData.emit(userData);
-      return this.http.get<cart[]>(this.baseUrl+`cart?userId=` + userData.id);
+      return this.http.get<cart[]>(this.baseUrl + ApiEndPoints.cartUserid + userData.id);
     } else {
       this.cartData?.emit(userData);
-      return this.http.get<cart[]>(this.baseUrl+`wCart`);
+      return this.http.get<cart[]>(this.baseUrl + ApiEndPoints.wCart);
     }
   }
   // ALL CART ITEMS
 
   // ORDER NOW
   orderNow(data: order) {
-    return this.http.post(this.baseUrl+'orders', data);
+    return this.http.post(this.baseUrl + ApiEndPoints.orders, data);
   }
   // ORDER NOW
   // GET ALL ORDERS
   getOrders() {
     let userStore = localStorage.getItem('user');
     let userData = userStore && JSON.parse(userStore)[0];
-    return this.http.get<order[]>(this.baseUrl+`orders?userId=` + userData.id);
+    return this.http.get<order[]>(this.baseUrl + ApiEndPoints.ordersUserId + userData.id);
   }
   // GET ALL ORDERS
   // CANCEL ORDER
   cancelOrder(productId: order) {
-    return this.http.delete(this.baseUrl+`orders/` + productId);
+    return this.http.delete(this.baseUrl + ApiEndPoints.ordersId + productId);
   }
   // CANCEL ORDER
 }
