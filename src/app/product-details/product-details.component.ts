@@ -49,7 +49,6 @@ export class ProductDetailsComponent implements OnInit {
 
     // GET ROUTE SLUGN NAME
     let productId = this.activateRoute.snapshot.paramMap.get('productId');
-    console.log(productId);
 
     // GET ROUTE SLUGN NAME
     this.product.getProduct(productId).subscribe((product) => {
@@ -70,6 +69,7 @@ export class ProductDetailsComponent implements OnInit {
         this.product?.cartItems().subscribe((res) => {
           res.forEach((item) => {
             if (item.productId === productId) {
+              // this.product.getAllCartItems(productId);
               this.addRemoveBtn = false;
             }
 

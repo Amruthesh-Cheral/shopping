@@ -33,4 +33,20 @@ export class SellerAddProductComponent {
     }
 
   }
+
+
+// submitProductV2() {
+//   if (!this.form.valid) {
+//     alert("something error")
+//   }
+//   this.apiHelper.post(this.form.value, ApiEndPoints.products).subscribe((res) => {
+//     if (res) {
+//       this.addMsg = "Successfully Product Added"
+//     }
+//     setTimeout(() => (this.addMsg = undefined), 4000);
+
+//     this.form.reset();
+//   })
+// }
+  
 }

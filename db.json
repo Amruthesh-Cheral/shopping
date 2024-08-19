@@ -61,16 +61,28 @@
   ],
   "wCart": [
     {
-      "id": "ab23",
-      "productName": "MOtorolla 456",
-      "productPrice": "68978",
-      "productColor": "pitha",
+      "id": "ea6f",
+      "productName": "motorolla 123",
+      "productPrice": "292929",
+      "productColor": "blue",
       "productCategory": "mobile",
-      "productDescription": "slider ",
-      "productURL": "https://i.gadgets360cdn.com/products/large/Realme-12-Pro-Plus-5G-DB-709x800-1706525405.jpg",
+      "productDescription": "looking awsome",
+      "productURL": "https://rukminim2.flixcart.com/image/850/1000/xif0q/mobile/e/y/n/pixel-8a-ga04432-in-google-original-imahyn3mqzdbzywg.jpeg?q=90&crop=false",
       "quantinty": 1,
       "userId": 111,
-      "productId": "e51f"
+      "productId": "7cca"
+    },
+    {
+      "id": "5917",
+      "productName": "Vertu 5G Jade Black Leather",
+      "productPrice": "259,000.00",
+      "productColor": "black",
+      "productCategory": "mobile",
+      "productDescription": "Vertu 5G Jade Black Leather Luxury Mobile Phone",
+      "productURL": "https://www.astore.in/cdn/shop/files/Vertu5GJadeBlackLeatherLuxuryMobilePhone.jpg?v=1696681627",
+      "quantinty": 1,
+      "userId": 111,
+      "productId": "c7bc"
     }
   ],
   "products": [
@@ -127,6 +139,24 @@
       "productCategory": "Shambu 2",
       "productDescription": "Hellow Users 2",
       "productURL": "https://cdn.dummyjson.com/products/images/beauty/Eyeshadow%20Palette%20with%20Mirror/1.png"
+    },
+    {
+      "id": "c7bc",
+      "productName": "Vertu 5G Jade Black Leather",
+      "productPrice": "259,000.00",
+      "productColor": "black",
+      "productCategory": "mobile",
+      "productDescription": "Vertu 5G Jade Black Leather Luxury Mobile Phone",
+      "productURL": "https://www.astore.in/cdn/shop/files/Vertu5GJadeBlackLeatherLuxuryMobilePhone.jpg?v=1696681627"
+    },
+    {
+      "id": "dc5d",
+      "productName": "SAMSUNG Galaxy S24 Ultra 5G",
+      "productPrice": "1,29,999",
+      "productColor": "Gray",
+      "productCategory": "Mobile",
+      "productDescription": "SAMSUNG Galaxy S24 Ultra 5G (Titanium Gray, 256 GB)  (12 GB RAM)",
+      "productURL": "https://rukminim2.flixcart.com/image/832/832/xif0q/mobile/5/i/7/-original-imahfu766ybd5h4z.jpeg?q=70&crop=false"
     }
   ],
   "orders": [
